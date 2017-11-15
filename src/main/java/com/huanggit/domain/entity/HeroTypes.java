@@ -2,8 +2,7 @@ package com.huanggit.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.huanggit.enumeration.player.Gender;
-import com.huanggit.enumeration.player.Rank;
+import com.huanggit.enumeration.hero.HeroType;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -15,43 +14,23 @@ import java.util.Date;
  * Created by huang on 2017-11-15-0015.
  */
 @Entity
-@Table(name = "player")
-@Data
+@Table(name = "hero_types")
 @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
-public class Player {
+@Data
+public class HeroTypes {
 
     @Id
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String playerCode;
-
     @NotBlank
-    private String mobile;
-
-    @NotBlank
-    @JsonIgnore
-    private String password;
-
-    @NotBlank
-    @JsonIgnore
-    private String passwordSalt;
-
-    private String nickName;
+    private String heroCode;
 
     @NotNull
-    private Integer point = new Integer(0);
-
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private HeroType heroTypes;
 
-    @Enumerated(EnumType.STRING)
-    private Rank rank = Rank.COPPER3;
-
-    private Integer rankStar = new Integer(0);
-
-    @NotNull
     @JsonIgnore
     private Date createTime = new Date();
 }

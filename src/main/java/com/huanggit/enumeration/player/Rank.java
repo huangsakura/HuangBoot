@@ -1,4 +1,4 @@
-package com.huanggit.enumeration;
+package com.huanggit.enumeration.player;
 
 /**
  * Created by huang on 2017-11-15-0015.
