@@ -1,0 +1,54 @@
+package com.huanggit.domain.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.huanggit.enumeration.Gender;
+import com.huanggit.enumeration.Rank;
+import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+
+/**
+ * Created by huang on 2017-11-15-0015.
+ */
+@Entity
+@Table(name = "player")
+@Data
+@JsonInclude(value = JsonInclude.Include.NON_EMPTY)
+public class Player {
+
+    @Id
+    @JsonIgnore
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    private String mobile;
+
+    @NotBlank
+    @JsonIgnore
+    private String password;
+
+    @NotBlank
+    @JsonIgnore
+    private String passwordSalt;
+
+    @NotBlank
+    private String nickName;
+
+    @NotNull
+    private Integer point = new Integer(0);
+
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
+
+    @Enumerated(EnumType.STRING)
+    private Rank rank = Rank.COPPER3;
+
+    @NotNull
+    @JsonIgnore
+    private Date createTime = new Date();
+}
