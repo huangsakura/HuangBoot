@@ -1,0 +1,75 @@
+<!--参考 http://www.cnblogs.com/warking/p/5710303.html-->
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <property name="APP_NAME" value="huangboot"/><!--定义变量，供上下文使用-->
+    <property name="LOG_PATH" value="E:/pccb/ownproject/log"/>
+    <contextName>${APP_NAME}</contextName><!--如果不显示设置这个属性，默认为default-->
+
+    <!--输出到 控制台的配置-->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- http://blog.csdn.net/haidage/article/details/6794540 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{0}: %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!--输出到 日志文件-->
+    <!-- 环境配置 dev -->
+    <!--<springProfile name="dev">-->
+    <appender name="FILE_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>NEUTRAL</onMismatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>WARN</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}.%d{yyyy-MM-dd}.info.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{0}: %msg%n</pattern>
+        </encoder>
+        <!--日志文件最大的大小-->
+        <!--
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+          <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+        -->
+    </appender>
+    <!--</springProfile>-->
+
+    <!--输出到 日志文件-->
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}.%d{yyyy-MM-dd}.error.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d %-5level [%thread] %logger{0}: %msg%n</pattern>
+        </encoder>
+        <!--日志文件最大的大小-->
+        <!--
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+          <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+        -->
+    </appender>
+
+    <!--TRACE < DEBUG < INFO < WARN < ERROR-->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE_INFO" />
+        <appender-ref ref="FILE_ERROR" />
+    </root>
+</configuration>
