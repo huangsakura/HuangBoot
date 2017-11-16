@@ -29,7 +29,7 @@ public class PlayerServiceImpl implements PlayerService {
         player.setPassword(password);
         player.setPasswordSalt(DateUtil.format(new Date(), DateUtil.DateFormatPattern.DATETIME_NOT_SEPARATOR));
         playerRepository.save(player);
-        player.setPlayerCode(RandomUtil.prefixChar(4)+DateUtil.format(new Date(), DateUtil.DateFormatPattern.DATE_NOT_SEPARATOR)+player.getId());
+        player.setPlayerCode(RandomUtil.randomString(4)+DateUtil.format(new Date(), DateUtil.DateFormatPattern.DATE_NOT_SEPARATOR)+player.getId());
         if (StringUtils.isEmpty(nickName)) {
             player.setNickName(player.getPlayerCode());
         } else {

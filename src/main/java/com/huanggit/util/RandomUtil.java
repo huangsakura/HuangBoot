@@ -1,5 +1,7 @@
 package com.huanggit.util;
 
+import com.huanggit.enumeration.common.Country;
+
 import java.util.Random;
 
 /**
@@ -15,7 +17,7 @@ public class RandomUtil {
 
     private static final Random RANDOM = new Random();
 
-    public static String prefixChar(int length) {
+    public static String randomString(int length) {
         if (length <= 0) {
             throw new UnsupportedOperationException();
         }
@@ -27,7 +29,7 @@ public class RandomUtil {
         return sb.toString();
     }
 
-    public static String prefixNumber(int length) {
+    public static String randomNumber(int length) {
         if (length <= 0) {
             throw new UnsupportedOperationException();
         }
@@ -38,8 +40,12 @@ public class RandomUtil {
         return sb.toString();
     }
 
+    public static Country randomCountry() {
+        Country[] countries = Country.values();
+        return countries[RANDOM.nextInt(countries.length)];
+    }
+
     public static void main(String[] a) {
-        System.out.println(prefixChar(4));
-        System.out.println(prefixNumber(4));
+        System.out.println(randomCountry());
     }
 }
