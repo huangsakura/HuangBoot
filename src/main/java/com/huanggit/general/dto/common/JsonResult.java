@@ -14,7 +14,7 @@ public class JsonResult {
 
     private boolean success = true;
 
-    private JsonResultCode code;
+    private JsonResultCode code = JsonResultCode.SUCCESS;
 
     private String message;
 

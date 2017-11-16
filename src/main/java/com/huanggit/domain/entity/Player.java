@@ -25,6 +25,7 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private String playerCode;
 
     @NotBlank
@@ -38,6 +39,7 @@ public class Player {
     @JsonIgnore
     private String passwordSalt;
 
+    @NotBlank
     private String nickName;
 
     @NotNull
@@ -48,8 +50,6 @@ public class Player {
 
     @Enumerated(EnumType.STRING)
     private Rank rank = Rank.COPPER3;
-
-    private Integer rankStar = new Integer(0);
 
     @NotNull
     @JsonIgnore

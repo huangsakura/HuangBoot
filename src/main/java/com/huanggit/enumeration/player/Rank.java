@@ -23,5 +23,5 @@ public enum Rank {
     DIAMOND4,
     DIAMOND3,
     DIAMOND2,
-    DIAMOND
+    DIAMOND1
 }
