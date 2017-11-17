@@ -12,8 +12,8 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        if (!registry.hasMappingForPattern("swagger-ui.html")) {
-            registry.addResourceHandler("swagger-ui.html")
+        if (!registry.hasMappingForPattern("/swagger-ui.html")) {
+            registry.addResourceHandler("/swagger-ui.html")
                     .addResourceLocations("classpath:/META-INF/resources/");
         }
 

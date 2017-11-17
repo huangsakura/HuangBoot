@@ -29,7 +29,7 @@ public class HeroTypes {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private HeroType heroTypes;
+    private HeroType heroType;
 
     @JsonIgnore
     private Date createTime = new Date();

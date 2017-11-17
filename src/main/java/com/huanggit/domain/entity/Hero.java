@@ -2,11 +2,13 @@ package com.huanggit.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.huanggit.enumeration.hero.HeroType;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by huang on 2017-11-15-0015.
@@ -30,4 +32,7 @@ public class Hero {
 
     @JsonIgnore
     private Date createTime = new Date();
+
+    @Transient
+    private List<HeroType> heroTypes;
 }

@@ -36,7 +36,7 @@ DROP TABLE IF EXISTS `hero_types`;
 CREATE TABLE `hero_types` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `hero_Code` varchar(32) COLLATE utf8_bin NOT NULL,
-  `hero_Types` varchar(32) COLLATE utf8_bin NOT NULL,
+  `hero_Type` varchar(32) COLLATE utf8_bin NOT NULL,
   `create_Time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uni_hero_Code_hero_Types` (`hero_Code`,`hero_Types`) USING BTREE
@@ -90,3 +90,46 @@ insert into hero(hero_name,hero_code,create_time) values('宫本武藏','gongben
 insert into hero(hero_name,hero_code,create_time) values('不知火舞','buzhihuowu',now());
 insert into hero(hero_name,hero_code,create_time) values('娜可露露','nakelulu',now());
 insert into hero(hero_name,hero_code,create_time) values('橘右京','juyoujing',now());
+insert into hero(hero_name,hero_code,create_time) values('庄周','zhuangzhou',now());
+insert into hero(hero_name,hero_code,create_time) values('狄仁杰','direnjie',now());
+insert into hero(hero_name,hero_code,create_time) values('张良','zhangliang',now());
+insert into hero(hero_name,hero_code,create_time) values('黄忠','huangzhong',now());
+insert into hero(hero_name,hero_code,create_time) values('妲己','daji',now());
+insert into hero(hero_name,hero_code,create_time) values('安琪拉','anqila',now());
+insert into hero(hero_name,hero_code,create_time) values('亚瑟','yase',now());
+insert into hero(hero_name,hero_code,create_time) values('程咬金','chengyaojin',now());
+insert into hero(hero_name,hero_code,create_time) values('廉颇','lianpo',now());
+insert into hero(hero_name,hero_code,create_time) values('孙膑','sunbin',now());
+insert into hero(hero_name,hero_code,create_time) values('鬼谷子','guiguzi',now());
+insert into hero(hero_name,hero_code,create_time) values('百里守约','bailishouyue',now());
+insert into hero(hero_name,hero_code,create_time) values('百里玄策','bailixuance',now());
+
+
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('sunshangxiang','SHOOTER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('yuji','SHOOTER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('xiangyu','WARRIOR',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('xiangyu','TANK',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('yingzheng','SHOOTER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('jingke','ASSASSIN',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('liubang','TANK',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('hanxin','WARRIOR',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('bianque','WITCHER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('gongbenwuzang','WARRIOR',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('buzhihuowu','WITCHER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('nakelulu','ASSASSIN',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('nakelulu','WARRIOR',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('juyoujing','WARRIOR',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('zhuangzhou','TANK',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('zhuangzhou','ASSISTANT',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('direnjie','SHOOTER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('zhangliang','WITCHER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('huangzhong','SHOOTER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('daji','WITCHER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('anqila','WITCHER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('yase','TANK',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('chengyaojin','TANK',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('lianpo','TANK',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('sunbin','ASSISTANT',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('guiguzi','ASSISTANT',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('bailishouyue','SHOOTER',now());
+INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('bailixuance','WARRIOR',now());

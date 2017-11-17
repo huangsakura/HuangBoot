@@ -8,5 +8,6 @@ public enum HeroType {
     WARRIOR,
     ASSASSIN,
     TANK,
-    ASSISTANT
+    ASSISTANT,
+    WITCHER
 }
