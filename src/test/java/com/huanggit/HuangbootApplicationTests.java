@@ -18,7 +18,7 @@ public class HuangbootApplicationTests {
 	@Test
 	public void contextLoads() {
 
-		playerService.register("13290036151","111111",null, Gender.FEMALE);
+		playerService.register("13290036155","111111",null, Gender.FEMALE);
 	}
 
 }

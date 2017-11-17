@@ -56,7 +56,7 @@ CREATE TABLE `player` (
   `point` int(8) DEFAULT NULL,
   `gender` varchar(16) COLLATE utf8_bin DEFAULT NULL,
   `rank` varchar(16) COLLATE utf8_bin DEFAULT NULL,
-  `rank_Star` int(8) DEFAULT NULL,
+  `country` varchar(32) COLLATE utf8_bin DEFAULT NULL,
   `create_Time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `uni_mobile` (`mobile`) USING BTREE,

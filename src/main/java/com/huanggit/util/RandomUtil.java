@@ -42,7 +42,7 @@ public class RandomUtil {
 
     public static Country randomCountry() {
         Country[] countries = Country.values();
-        return countries[RANDOM.nextInt(countries.length)];
+        return countries[RANDOM.nextInt(Country.COUNTRY_SIZE)];
     }
 
     public static void main(String[] a) {

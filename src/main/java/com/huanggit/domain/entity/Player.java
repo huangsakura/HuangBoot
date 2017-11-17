@@ -2,6 +2,7 @@ package com.huanggit.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.huanggit.enumeration.common.Country;
 import com.huanggit.enumeration.player.Gender;
 import com.huanggit.enumeration.player.Rank;
 import lombok.Data;
@@ -50,6 +51,9 @@ public class Player {
 
     @Enumerated(EnumType.STRING)
     private Rank rank = Rank.COPPER3;
+
+    @Enumerated(EnumType.STRING)
+    private Country country;
 
     @NotNull
     @JsonIgnore
