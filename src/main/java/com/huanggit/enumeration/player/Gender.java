@@ -5,5 +5,6 @@ package com.huanggit.enumeration.player;
  */
 public enum Gender {
     MALE,
-    FEMALE
+    FEMALE,
+    UNKNOWN
 }

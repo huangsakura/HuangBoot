@@ -22,7 +22,7 @@ public class HeroController {
     private HeroService heroService;
 
     @ApiImplicitParam(value = "加载全部")
-    @RequestMapping(value = "/loadAll",method = RequestMethod.GET)
+    @RequestMapping(value = "/loadAll",method = RequestMethod.GET,produces = "application/json")
     @ResponseBody
     public JsonResult loadAll() {
         JsonResult jsonResult = new JsonResult();

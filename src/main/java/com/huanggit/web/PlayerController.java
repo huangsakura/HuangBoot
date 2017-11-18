@@ -26,27 +26,29 @@ public class PlayerController {
     private PlayerService playerService;
 
     @ApiImplicitParam(value = "注册")
-    @RequestMapping(value = "/register",method = RequestMethod.POST)
+    @RequestMapping(value = "/register",method = RequestMethod.POST,produces = "application/json")
     @ResponseBody
     public JsonResult register(@RequestParam("mobile") String mobile,
                                @RequestParam("password") String password,
-                               @RequestParam("nickName") String nickName,
-                               @RequestParam("gender") Gender gender) {
+                               @RequestParam(value = "nickName",required = false) String nickName,
+                               @RequestParam(value = "gender",required = false,defaultValue = "UNKNOWN") Gender gender) {
         JsonResult jsonResult = new JsonResult();
         try {
             jsonResult.appendData("data",playerService.register(mobile,password,nickName,gender));
         } catch (BusinessException e) {
             jsonResult.setSuccess(false);
             jsonResult.setCode(e.getCode());
+            jsonResult.setMessage(e.getMessage());
         } catch (Exception e) {
             jsonResult.setSuccess(false);
             jsonResult.setCode(ResultCode.OTHER);
+            String.valueOf(Gender.UNKNOWN);
         }
         return jsonResult;
     }
 
     @ApiImplicitParam(value = "登录")
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST,produces = "application/json")
     @ResponseBody
     public JsonResult login(@RequestParam("mobile") String mobile,
                             @RequestParam("password") String password) {
