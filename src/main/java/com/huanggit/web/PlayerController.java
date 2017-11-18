@@ -34,4 +34,14 @@ public class PlayerController {
         jsonResult.appendData("data",playerService.register(mobile,password,nickName,gender));
         return jsonResult;
     }
+
+    @ApiImplicitParam(value = "登录")
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @ResponseBody
+    public JsonResult login(@RequestParam("mobile") String mobile,
+                            @RequestParam("password") String password) {
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.appendData("data",playerService.login(mobile,password));
+        return jsonResult;
+    }
 }

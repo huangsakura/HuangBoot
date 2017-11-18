@@ -1,8 +1,11 @@
 package com.huanggit.util;
 
 import com.huanggit.enumeration.common.Country;
+import com.huanggit.enumeration.common.ExceptionCode;
+import com.huanggit.exception.BusinessException;
+import org.apache.commons.codec.binary.Hex;
 
-import java.util.Random;
+import java.security.SecureRandom;
 
 /**
  * Created by huang on 2017-11-15-0015.
@@ -15,11 +18,11 @@ public class RandomUtil {
 
     private static final char[] NUMBERS = {'1','2','3','4','5','6','7','8','9','0'};
 
-    private static final Random RANDOM = new Random();
+    private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static String randomString(int length) {
+    public static String randomChar(int length) {
         if (length <= 0) {
-            throw new UnsupportedOperationException();
+            throw new BusinessException(ExceptionCode.NOT_ALLOWED_PARAMETER);
         }
         StringBuffer sb = new StringBuffer();
 
@@ -31,7 +34,7 @@ public class RandomUtil {
 
     public static String randomNumber(int length) {
         if (length <= 0) {
-            throw new UnsupportedOperationException();
+            throw new BusinessException(ExceptionCode.NOT_ALLOWED_PARAMETER);
         }
         StringBuffer sb = new StringBuffer();
         for (int i=0;i<length;i++) {
@@ -45,7 +48,20 @@ public class RandomUtil {
         return countries[RANDOM.nextInt(Country.COUNTRY_SIZE)];
     }
 
+    public static byte[] randomBytes(int numBytes) {
+        if (numBytes <= 0) {
+            throw new BusinessException(ExceptionCode.NOT_ALLOWED_PARAMETER);
+        }
+        byte[] bytes = new byte[numBytes];
+        RANDOM.nextBytes(bytes);
+        return bytes;
+    }
+
+    public static String randomString(int numBytes) {
+        return Hex.encodeHexString(randomBytes(numBytes));
+    }
+
     public static void main(String[] a) {
-        System.out.println(randomCountry());
+        System.out.println(randomString(12));
     }
 }

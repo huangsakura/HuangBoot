@@ -9,4 +9,6 @@ import com.huanggit.enumeration.player.Gender;
 public interface PlayerService {
 
     Player register(String mobile,String password, String nickName,Gender gender);
+
+    Player login(String mobile,String password);
 }
