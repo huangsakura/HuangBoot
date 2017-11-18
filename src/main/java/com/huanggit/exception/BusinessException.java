@@ -1,6 +1,6 @@
 package com.huanggit.exception;
 
-import com.huanggit.enumeration.common.ExceptionCode;
+import com.huanggit.enumeration.common.ResultCode;
 
 /**
  * Created by huang on 2017-11-18-0018.
@@ -8,21 +8,21 @@ import com.huanggit.enumeration.common.ExceptionCode;
 public class BusinessException extends RuntimeException {
 
     private final String message;
-    private final ExceptionCode code;
+    private final ResultCode code;
 
-    public BusinessException(String message, ExceptionCode exceptionCode) {
+    public BusinessException(String message, ResultCode exceptionCode) {
         this.message = message;
         this.code = exceptionCode;
     }
 
-    public BusinessException(ExceptionCode exceptionCode) {
+    public BusinessException(ResultCode exceptionCode) {
         this.message = exceptionCode.getMessage();
         this.code = exceptionCode;
     }
 
     public BusinessException(String message) {
         this.message = message;
-        this.code = ExceptionCode.OTHER;
+        this.code = ResultCode.OTHER;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class BusinessException extends RuntimeException {
         return message;
     }
 
-    public ExceptionCode getCode() {
+    public ResultCode getCode() {
         return code;
     }
 }

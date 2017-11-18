@@ -3,15 +3,17 @@ package com.huanggit.service.impl;
 import com.huanggit.domain.entity.Player;
 import com.huanggit.domain.repository.PlayerRepository;
 import com.huanggit.enumeration.common.Country;
-import com.huanggit.enumeration.common.ExceptionCode;
+import com.huanggit.enumeration.common.ResultCode;
 import com.huanggit.enumeration.player.Gender;
 import com.huanggit.exception.BusinessException;
 import com.huanggit.service.PlayerService;
 import com.huanggit.util.DateUtil;
 import com.huanggit.util.RandomUtil;
 import com.huanggit.util.SecurityUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.redis.core.StringRedisTemplate;
@@ -25,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by huang on 2017-11-15-0015.
  */
+@Slf4j
 @Service(value = "playerService")
 public class PlayerServiceImpl implements PlayerService {
 
@@ -59,7 +62,14 @@ public class PlayerServiceImpl implements PlayerService {
         } else {
             player.setNickName(nickName);
         }
-        playerRepository.save(player);
+        try {
+            playerRepository.save(player);
+        } catch (DataIntegrityViolationException e) {
+            throw new BusinessException(ResultCode.MOBILE_EXISTED);
+        } catch (Exception e) {
+            log.error("手机号{}注册失败:{}",mobile,e.getMessage());
+            throw new BusinessException("注册失败",ResultCode.OTHER);
+        }
         return player;
     }
 
@@ -74,7 +84,7 @@ public class PlayerServiceImpl implements PlayerService {
         if (!playerList.isEmpty()) {
             return playerList.get(0);
         } else {
-            throw new BusinessException(ExceptionCode.PLAYER_NOT_EXIST);
+            throw new BusinessException(ResultCode.PLAYER_NOT_EXIST);
         }
     }
 }

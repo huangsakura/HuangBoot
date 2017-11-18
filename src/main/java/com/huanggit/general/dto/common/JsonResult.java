@@ -1,6 +1,6 @@
 package com.huanggit.general.dto.common;
 
-import com.huanggit.enumeration.common.JsonResultCode;
+import com.huanggit.enumeration.common.ResultCode;
 import lombok.Data;
 
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public class JsonResult {
 
     private boolean success = true;
 
-    private JsonResultCode code = JsonResultCode.SUCCESS;
+    private ResultCode code = ResultCode.SUCCESS;
 
     private String message;
 

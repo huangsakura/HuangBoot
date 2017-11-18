@@ -1,6 +1,8 @@
 package com.huanggit.web;
 
+import com.huanggit.enumeration.common.ResultCode;
 import com.huanggit.enumeration.player.Gender;
+import com.huanggit.exception.BusinessException;
 import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.service.PlayerService;
 import io.swagger.annotations.Api;
@@ -31,7 +33,15 @@ public class PlayerController {
                                @RequestParam("nickName") String nickName,
                                @RequestParam("gender") Gender gender) {
         JsonResult jsonResult = new JsonResult();
-        jsonResult.appendData("data",playerService.register(mobile,password,nickName,gender));
+        try {
+            jsonResult.appendData("data",playerService.register(mobile,password,nickName,gender));
+        } catch (BusinessException e) {
+            jsonResult.setSuccess(false);
+            jsonResult.setCode(e.getCode());
+        } catch (Exception e) {
+            jsonResult.setSuccess(false);
+            jsonResult.setCode(ResultCode.OTHER);
+        }
         return jsonResult;
     }
 
