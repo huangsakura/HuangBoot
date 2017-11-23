@@ -43,15 +43,15 @@ public class Player {
     @NotBlank
     private String nickName;
 
-    @NotNull
     private Integer point = new Integer(0);
 
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Gender gender = Gender.UNKNOWN;
 
     @Enumerated(EnumType.STRING)
     private Rank rank = Rank.COPPER3;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private Country country;
 

@@ -7,6 +7,7 @@ import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.service.PlayerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Created by huang on 2017-11-15-0015.
  */
+@Slf4j
 @Api(value = "玩家")
 @Controller
 @RequestMapping(value = "/player")
@@ -31,7 +33,7 @@ public class PlayerController {
     public JsonResult register(@RequestParam("mobile") String mobile,
                                @RequestParam("password") String password,
                                @RequestParam(value = "nickName",required = false) String nickName,
-                               @RequestParam(value = "gender",required = false,defaultValue = "UNKNOWN") Gender gender) {
+                               @RequestParam(value = "gender",required = false) Gender gender) {
         JsonResult jsonResult = new JsonResult();
         try {
             jsonResult.appendData("data",playerService.register(mobile,password,nickName,gender));
@@ -40,9 +42,10 @@ public class PlayerController {
             jsonResult.setCode(e.getCode());
             jsonResult.setMessage(e.getMessage());
         } catch (Exception e) {
+            log.error("注册失败:{}",e.getMessage());
             jsonResult.setSuccess(false);
             jsonResult.setCode(ResultCode.OTHER);
-            String.valueOf(Gender.UNKNOWN);
+            jsonResult.setMessage("注册失败");
         }
         return jsonResult;
     }

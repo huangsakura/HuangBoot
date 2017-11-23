@@ -30,6 +30,7 @@ public class PlayerHeros {
     @NotBlank
     private String heroCode;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private HeroProficiency heroProficiency;
 
