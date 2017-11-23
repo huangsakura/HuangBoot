@@ -36,5 +36,5 @@ public class PlayerHeros {
 
     @NotNull
     @JsonIgnore
-    private Date createTime = new Date();
+    private Date createTime;
 }

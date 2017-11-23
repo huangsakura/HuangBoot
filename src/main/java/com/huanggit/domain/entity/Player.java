@@ -57,5 +57,5 @@ public class Player {
 
     @NotNull
     @JsonIgnore
-    private Date createTime = new Date();
+    private Date createTime;
 }

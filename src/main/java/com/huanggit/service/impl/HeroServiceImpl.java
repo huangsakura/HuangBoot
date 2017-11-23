@@ -1,8 +1,10 @@
 package com.huanggit.service.impl;
 
+import com.huanggit.domain.dao.HeroDao;
 import com.huanggit.domain.dao.HeroTypesDao;
 import com.huanggit.domain.entity.Hero;
 import com.huanggit.domain.repository.HeroRepository;
+import com.huanggit.enumeration.hero.HeroType;
 import com.huanggit.service.HeroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,8 @@ public class HeroServiceImpl implements HeroService {
     private HeroRepository heroRepository;
     @Autowired
     private HeroTypesDao heroTypesDao;
+    @Autowired
+    private HeroDao heroDao;
 
     @Override
     public List<Hero> loadAll() {
@@ -26,5 +30,10 @@ public class HeroServiceImpl implements HeroService {
             hero.setHeroTypes(heroTypesDao.findTypesByHero(hero.getHeroCode()));
         }
         return heroList;
+    }
+
+    @Override
+    public List<Hero> findByHeroType(HeroType heroType) {
+        return heroDao.findByHeroType(heroType);
     }
 }

@@ -31,7 +31,7 @@ public class Hero {
     private String heroCode;
 
     @JsonIgnore
-    private Date createTime = new Date();
+    private Date createTime;
 
     @Transient
     private List<HeroType> heroTypes;

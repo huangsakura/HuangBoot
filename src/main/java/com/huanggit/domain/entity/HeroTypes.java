@@ -32,5 +32,5 @@ public class HeroTypes {
     private HeroType heroType;
 
     @JsonIgnore
-    private Date createTime = new Date();
+    private Date createTime;
 }
