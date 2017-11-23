@@ -133,3 +133,43 @@ INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('sunbin','ASSISTA
 INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('guiguzi','ASSISTANT',now());
 INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('bailishouyue','SHOOTER',now());
 INSERT into hero_types(hero_Code,hero_Type,create_Time) VALUES('bailixuance','WARRIOR',now());
+
+CREATE TABLE `continent` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `continent_Code` char(2) COLLATE utf8_bin DEFAULT NULL,
+  `continent_Name` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `continent_Chinese_Name` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `create_Time` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_continent_Code` (`continent_Code`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+INSERT into continent(continent_Code,continent_Name,continent_Chinese_Name,create_time)
+  VALUES('AS','Asia','亚洲',now());
+INSERT into continent(continent_Code,continent_Name,continent_Chinese_Name,create_time)
+  VALUES('AF','Africa','非洲',now());
+INSERT into continent(continent_Code,continent_Name,continent_Chinese_Name,create_time)
+  VALUES('NA','NorthAmerica','北美洲',now());
+INSERT into continent(continent_Code,continent_Name,continent_Chinese_Name,create_time)
+  VALUES('SA','SouthAmerica','南美洲',now());
+INSERT into continent(continent_Code,continent_Name,continent_Chinese_Name,create_time)
+  VALUES('EU','Europe','欧洲',now());
+INSERT into continent(continent_Code,continent_Name,continent_Chinese_Name,create_time)
+  VALUES('AN','Antarctica','南极洲',now());
+
+CREATE TABLE `country` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `country_Code` char(2) COLLATE utf8_bin DEFAULT NULL,
+  `country_Name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+  `country_Full_Name` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `country_Chinese_Name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+  `country_Chinese_Full_Name` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `capital_Name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+  `capital_Chinese_Name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
+  `population` bigint(20) DEFAULT NULL,
+  `continent_Code` char(2) COLLATE utf8_bin DEFAULT NULL,
+  `countrySize` varchar(20) COLLATE utf8_bin DEFAULT NULL,
+  `create_Time` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_country_Code` (`country_Code`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

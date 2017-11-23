@@ -6,6 +6,8 @@ import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 /**
  * Created by huang on 2017-11-20-0020.
@@ -53,4 +55,8 @@ public class Country {
      */
     @NotBlank
     private String countrySize;
+
+    @JsonIgnore
+    @NotNull
+    private Date createTime;
 }
