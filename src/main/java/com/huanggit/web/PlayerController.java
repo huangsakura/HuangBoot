@@ -1,12 +1,14 @@
 package com.huanggit.web;
 
+import com.huanggit.annotation.OperationLog;
 import com.huanggit.enumeration.common.ResultCode;
 import com.huanggit.enumeration.player.Gender;
 import com.huanggit.exception.BusinessException;
 import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.service.PlayerService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,13 +29,14 @@ public class PlayerController {
     @Autowired
     private PlayerService playerService;
 
-    @ApiImplicitParam(value = "注册")
+    @ApiOperation(value = "注册",notes = "注册")
     @RequestMapping(value = "/register",method = RequestMethod.POST,produces = "application/json")
     @ResponseBody
-    public JsonResult register(@RequestParam("mobile") String mobile,
-                               @RequestParam("password") String password,
-                               @RequestParam(value = "nickName",required = false) String nickName,
-                               @RequestParam(value = "gender",required = false) Gender gender) {
+    @OperationLog
+    public JsonResult register(@ApiParam(name = "mobile",required = true,value = "手机号") @RequestParam(value = "mobile",required = true) String mobile,
+                               @ApiParam(name = "password",required = true,value = "密码") @RequestParam(value = "password",required = true) String password,
+                               @ApiParam(name = "nickName",required = false,value = "昵称") @RequestParam(value = "nickName",required = false) String nickName,
+                               @ApiParam(name = "gender",required = false,value = "性别") @RequestParam(value = "gender",required = false) Gender gender) {
         JsonResult jsonResult = new JsonResult();
         try {
             jsonResult.appendData("data",playerService.register(mobile,password,nickName,gender));
@@ -50,11 +53,12 @@ public class PlayerController {
         return jsonResult;
     }
 
-    @ApiImplicitParam(value = "登录")
+    @ApiOperation(value = "登录",notes = "注册")
     @RequestMapping(value = "/login",method = RequestMethod.POST,produces = "application/json")
     @ResponseBody
-    public JsonResult login(@RequestParam("mobile") String mobile,
-                            @RequestParam("password") String password) {
+    @OperationLog
+    public JsonResult login(@ApiParam(name = "mobile",required = true,value = "手机号") @RequestParam(value = "mobile",required = true) String mobile,
+                            @ApiParam(name = "password",required = true,value = "密码") @RequestParam(value = "password",required = true) String password) {
         JsonResult jsonResult = new JsonResult();
         jsonResult.appendData("data",playerService.login(mobile,password));
         return jsonResult;

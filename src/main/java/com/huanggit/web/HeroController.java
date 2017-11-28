@@ -5,6 +5,8 @@ import com.huanggit.enumeration.hero.HeroType;
 import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.service.HeroService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +27,8 @@ public class HeroController {
 
     @RequestMapping(value = "/loadAll",method = RequestMethod.GET,produces = "application/json")
     @ResponseBody
+    @OperationLog
+    @ApiOperation(value = "加载所有英雄",notes = "加载所有英雄")
     public JsonResult loadAll() {
         JsonResult jsonResult = new JsonResult();
         jsonResult.appendData("data", heroService.loadAll());
@@ -34,7 +38,8 @@ public class HeroController {
     @OperationLog
     @RequestMapping(value = "/findByHeroType",method = RequestMethod.GET,produces = "application/json")
     @ResponseBody
-    public JsonResult findByHeroType(@RequestParam(value = "heroType") HeroType heroType) {
+    @ApiOperation(value = "根据类型查询英雄",notes = "根据类型查询英雄")
+    public JsonResult findByHeroType(@ApiParam(name = "heroType",required = true,value = "英雄类型") @RequestParam(value = "heroType",required = true) HeroType heroType) {
         JsonResult jsonResult = new JsonResult();
         jsonResult.appendData("data", heroService.findByHeroType(heroType));
         return jsonResult;
