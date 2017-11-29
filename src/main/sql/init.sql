@@ -59,3 +59,13 @@ CREATE TABLE `country` (
   UNIQUE KEY `uni_Alpha2_Code` (`Alpha2_Code`) USING BTREE,
   UNIQUE KEY `uni_Alpha3_Code` (`Alpha3_Code`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+DROP TABLE IF EXISTS `country_border`;
+CREATE TABLE `country_border` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `host_Alpha3_Code` char(3) COLLATE utf8_bin NOT NULL,
+  `guest_Alpha3_Code` char(3) COLLATE utf8_bin NOT NULL,
+  `create_Time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uni_host_Alpha3_Code` (`host_Alpha3_Code`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

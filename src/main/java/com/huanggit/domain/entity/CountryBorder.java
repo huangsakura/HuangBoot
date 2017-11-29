@@ -13,10 +13,10 @@ import java.util.Date;
  * Created by huang on 2017-11-29-0029.
  */
 @Table
-@Entity(name = "Country_Borders")
+@Entity(name = "Country_Border")
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
-public class CountryBorders {
+public class CountryBorder {
 
     @Id
     @JsonIgnore
@@ -24,10 +24,10 @@ public class CountryBorders {
     private Long id;
 
     @NotBlank
-    private String hostCountryAlpha3Code;
+    private String hostAlpha3Code;
 
     @NotBlank
-    private String guestCountryAlpha3Code;
+    private String guestAlpha3Code;
 
     @JsonIgnore
     @NotNull
