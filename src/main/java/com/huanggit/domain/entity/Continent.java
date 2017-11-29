@@ -25,13 +25,13 @@ public class Continent {
 
     @NotBlank
     @Column(unique = true)
-    private String continentCode;
+    private String code;
 
     @NotBlank
-    private String continentName;
+    private String name;
 
     @NotBlank
-    private String continentChineseName;
+    private String chineseName;
 
     @JsonIgnore
     @NotNull

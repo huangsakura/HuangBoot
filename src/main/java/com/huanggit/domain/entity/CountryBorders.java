@@ -2,7 +2,6 @@ package com.huanggit.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.huanggit.enumeration.hero.HeroType;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -11,13 +10,13 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
- * Created by huang on 2017-11-15-0015.
+ * Created by huang on 2017-11-29-0029.
  */
-@Entity
-@Table(name = "hero_types")
-@JsonInclude(value = JsonInclude.Include.NON_EMPTY)
+@Table
+@Entity(name = "Country_Borders")
 @Data
-public class HeroTypes {
+@JsonInclude(value = JsonInclude.Include.NON_EMPTY)
+public class CountryBorders {
 
     @Id
     @JsonIgnore
@@ -25,12 +24,12 @@ public class HeroTypes {
     private Long id;
 
     @NotBlank
-    private String heroCode;
+    private String hostCountryAlpha3Code;
 
-    @NotNull
-    @Enumerated(EnumType.STRING)
-    private HeroType heroType;
+    @NotBlank
+    private String guestCountryAlpha3Code;
 
     @JsonIgnore
+    @NotNull
     private Date createTime;
 }

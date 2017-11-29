@@ -24,20 +24,22 @@ public class Country {
     private Long id;
 
     @NotBlank
-    @Column(unique = true)
-    private String countryCode;
+    private String alpha2Code;
 
     @NotBlank
-    private String countryName;
+    private String alpha3Code;
 
     @NotBlank
-    private String countryFullName;
+    private String name;
 
     @NotBlank
-    private String countryChineseName;
+    private String fullName;
 
     @NotBlank
-    private String countryChineseFullName;
+    private String chineseName;
+
+    @NotBlank
+    private String chineseFullName;
 
     @NotBlank
     private String capitalName;
@@ -54,7 +56,9 @@ public class Country {
      * 国家面积，（平方公里）
      */
     @NotBlank
-    private String countrySize;
+    private String area;
+
+    private String nationalFlag;
 
     @JsonIgnore
     @NotNull

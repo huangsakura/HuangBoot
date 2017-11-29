@@ -1,6 +1,5 @@
 package com.huanggit.util;
 
-import com.huanggit.enumeration.common.Country;
 import com.huanggit.enumeration.common.ResultCode;
 import com.huanggit.exception.BusinessException;
 import org.apache.commons.codec.binary.Hex;
@@ -41,11 +40,6 @@ public class RandomUtil {
             sb.append(NUMBERS[RANDOM.nextInt(10)]);
         }
         return sb.toString();
-    }
-
-    public static Country randomCountry() {
-        Country[] countries = Country.values();
-        return countries[RANDOM.nextInt(Country.COUNTRY_SIZE)];
     }
 
     public static byte[] randomBytes(int numBytes) {
