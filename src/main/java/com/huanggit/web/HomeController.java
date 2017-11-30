@@ -14,4 +14,9 @@ public class HomeController {
     public String home() {
         return "index";
     }
+
+    @RequestMapping(value = "/test",method = RequestMethod.GET,produces = "text/html")
+    public String testPage() {
+        return "test";
+    }
 }

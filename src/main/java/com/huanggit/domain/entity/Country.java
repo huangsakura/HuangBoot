@@ -32,30 +32,24 @@ public class Country {
     @NotBlank
     private String name;
 
-    @NotBlank
     private String fullName;
 
-    @NotBlank
     private String chineseName;
 
-    @NotBlank
     private String chineseFullName;
 
     @NotBlank
     private String capitalName;
 
-    @NotBlank
     private String capitalChineseName;
 
-    private Integer population = new Integer(0);
+    private Integer population;
 
-    @NotBlank
     private String continentCode;
 
     /**
      * 国家面积，（平方公里）
      */
-    @NotBlank
     private String area;
 
     private String nationalFlag;

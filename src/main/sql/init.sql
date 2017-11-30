@@ -31,21 +31,21 @@ INSERT into continent(Code,Name,Chinese_Name,create_time)
 INSERT into continent(Code,Name,Chinese_Name,create_time)
   VALUES('AF','Africa','非洲',now());
 INSERT into continent(Code,Name,Chinese_Name,create_time)
-  VALUES('NA','NorthAmerica','北美洲',now());
-INSERT into continent(Code,Name,Chinese_Name,create_time)
-  VALUES('SA','SouthAmerica','南美洲',now());
+  VALUES('AM','Americas','美洲',now());
 INSERT into continent(Code,Name,Chinese_Name,create_time)
   VALUES('EU','Europe','欧洲',now());
 INSERT into continent(Code,Name,Chinese_Name,create_time)
   VALUES('AN','Antarctica','南极洲',now());
+  INSERT into continent(Code,Name,Chinese_Name,create_time)
+  VALUES('OC','Oceania','大洋洲',now());
 
 DROP TABLE IF EXISTS `country`;
 CREATE TABLE `country` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `Alpha2_Code` char(2) COLLATE utf8_bin DEFAULT NULL,
   `Alpha3_Code` char(3) COLLATE utf8_bin DEFAULT NULL,
-  `Name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
-  `Full_Name` varchar(64) COLLATE utf8_bin DEFAULT NULL,
+  `Name` varchar(128) COLLATE utf8_bin DEFAULT NULL,
+  `Full_Name` varchar(128) COLLATE utf8_bin DEFAULT NULL,
   `Chinese_Name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
   `Chinese_Full_Name` varchar(64) COLLATE utf8_bin DEFAULT NULL,
   `capital_Name` varchar(32) COLLATE utf8_bin DEFAULT NULL,
