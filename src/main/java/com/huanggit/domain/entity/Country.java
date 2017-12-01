@@ -1,13 +1,11 @@
 package com.huanggit.domain.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.huanggit.domain.entity.base.BaseEntity;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.Date;
 
 /**
  * Created by huang on 2017-11-20-0020.
@@ -16,12 +14,7 @@ import java.util.Date;
 @Entity(name = "country")
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
-public class Country {
-
-    @Id
-    @JsonIgnore
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Country extends BaseEntity {
 
     @NotBlank
     private String alpha2Code;
@@ -53,8 +46,4 @@ public class Country {
     private String area;
 
     private String nationalFlag;
-
-    @JsonIgnore
-    @NotNull
-    private Date createTime;
 }
