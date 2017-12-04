@@ -29,6 +29,6 @@ public class ContinentService {
     }
 
     public List<Continent> findAll() {
-        return continentDao.findAll();
+        return continentDao.find();
     }
 }

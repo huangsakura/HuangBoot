@@ -5,7 +5,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import com.huanggit.domain.entity.Continent;
-import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface ContinentDao {
@@ -17,6 +16,7 @@ public interface ContinentDao {
 
     int update(@Param("pojo") Continent pojo);
 
-    @Select("SELECT * FROM Continent")
-    List<Continent> findAll();
+    List<Continent> find();
+
+    List<Continent> findCodeAndNameAndChineseName();
 }
