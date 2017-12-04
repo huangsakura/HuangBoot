@@ -1,13 +1,34 @@
 package com.huanggit.service;
 
-import com.huanggit.domain.entity.Continent;
-
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
 import java.util.List;
+import com.huanggit.domain.entity.Continent;
+import com.huanggit.domain.dao.ContinentDao;
 
-/**
- * Created by huang on 2017-11-23-0023.
- */
-public interface ContinentService {
+@Service
+public class ContinentService {
 
-    List<Continent> loadAll();
+    @Resource
+    private ContinentDao continentDao;
+
+    public int insert(Continent pojo){
+        return continentDao.insert(pojo);
+    }
+
+    public int insertSelective(Continent pojo){
+        return continentDao.insertSelective(pojo);
+    }
+
+    public int insertList(List<Continent> pojos){
+        return continentDao.insertList(pojos);
+    }
+
+    public int update(Continent pojo){
+        return continentDao.update(pojo);
+    }
+
+    public List<Continent> findAll() {
+        return continentDao.findAll();
+    }
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.domain.dao.ContinentDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.domain.entity.Continent">
+        <result column="code" property="code"/>
+        <result column="name" property="name"/>
+        <result column="chinese_name" property="chineseName"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `code`,
+        `name`,
+        `chinese_name`,
+        `id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO continent (
+            `code`,
+            `name`,
+            `chinese_name`,
+            `id`,
+            `create_time`
+        ) VALUES (
+            #{pojo.code},
+            #{pojo.name},
+            #{pojo.chineseName},
+            #{pojo.id},
+            #{pojo.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO continent
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.code!=null"> `code`,</if>
+            <if test="pojo.name!=null"> `name`,</if>
+            <if test="pojo.chineseName!=null"> `chinese_name`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.code!=null">#{pojo.code},</if>
+            <if test="pojo.name!=null">#{pojo.name},</if>
+            <if test="pojo.chineseName!=null">#{pojo.chineseName},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO continent (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.code},
+            #{pojo.name},
+            #{pojo.chineseName},
+            #{pojo.id},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE continent
+        <set>
+            <if test="pojo.code != null"> `code` = #{pojo.code}, </if>
+            <if test="pojo.name != null"> `name` = #{pojo.name}, </if>
+            <if test="pojo.chineseName != null"> `chinese_name` = #{pojo.chineseName}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

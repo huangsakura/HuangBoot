@@ -28,7 +28,7 @@ public class ContinentController {
     @ApiOperation(value = "加载所有的洲",notes = "加载所有的洲")
     public JsonResult loadAll() {
         JsonResult jsonResult = new JsonResult();
-        jsonResult.appendData("data", continentService.loadAll());
+        jsonResult.appendData("data", continentService.findAll());
         return jsonResult;
     }
 }
