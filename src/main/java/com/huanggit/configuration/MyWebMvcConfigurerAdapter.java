@@ -5,6 +5,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
@@ -20,6 +21,7 @@ import java.util.Properties;
  * Created by huang on 2017-11-15-0015.
  */
 @Component
+@MapperScan(basePackages = {"com.huanggit.domain.dao"})
 public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     @Autowired
@@ -65,6 +67,7 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         dataSource.setInitialSize(2);
         dataSource.setMaxActive(20);
         dataSource.setMinIdle(0);
+        dataSource.setMaxIdle(20);
         dataSource.setMaxWait(60000);
         dataSource.setValidationQuery("SELECT 1");
         dataSource.setTestOnBorrow(false);
@@ -77,7 +80,6 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
         Configuration configuration = new Configuration();
-        configuration.setMapUnderscoreToCamelCase(true);
         sqlSessionFactoryBean.setConfiguration(configuration);
         /** 添加mapper 扫描路径 */
         PathMatchingResourcePatternResolver pathMatchingResourcePatternResolver = new PathMatchingResourcePatternResolver();
