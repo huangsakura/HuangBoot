@@ -3,7 +3,6 @@ package com.huanggit.domain.entity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.huanggit.domain.entity.base.BaseEntity;
 import lombok.Data;
-import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * Created by huang on 2017-11-20-0020.
