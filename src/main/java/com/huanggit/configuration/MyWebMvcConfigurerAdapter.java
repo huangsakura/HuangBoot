@@ -6,9 +6,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.env.Environment;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.stereotype.Component;
@@ -24,8 +22,8 @@ import java.util.Properties;
 @MapperScan(basePackages = {"com.huanggit.domain.dao"})
 public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
-    @Autowired
-    private Environment environment;
+    //@Autowired
+    //private Environment environment;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -60,10 +58,10 @@ public class MyWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
     @Bean
     public DataSource dataSource() {
         DataSource dataSource = new DataSource();
-        dataSource.setUrl(environment.getProperty("spring.datasource.url"));
-        dataSource.setUsername(environment.getProperty("spring.datasource.username"));
-        dataSource.setPassword(environment.getProperty("spring.datasource.password"));
-        dataSource.setDriverClassName(environment.getProperty("spring.datasource.driver-class-name"));
+        dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/study?useSSL=true&serverTimezone=GMT%2B8");
+        dataSource.setUsername("root");
+        dataSource.setPassword("huangjinlong");
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setInitialSize(2);
         dataSource.setMaxActive(20);
         dataSource.setMinIdle(0);
