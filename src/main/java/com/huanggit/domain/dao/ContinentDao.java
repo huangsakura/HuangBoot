@@ -1,12 +1,14 @@
 package com.huanggit.domain.dao;
 
 import com.huanggit.domain.repository.BaseJpaRepository;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import com.huanggit.domain.entity.Continent;
 import org.apache.ibatis.annotations.Select;
 
+@Mapper
 public interface ContinentDao extends BaseJpaRepository<Continent> {
 
     int insert(@Param("pojo") Continent pojo);
