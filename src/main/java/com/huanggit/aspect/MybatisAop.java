@@ -20,9 +20,15 @@ import java.lang.reflect.Field;
 @Component
 public class MybatisAop {
 
+    /**
+     * 匹配 com.huanggit.service 包下的以insert开头的方法
+     */
     @Pointcut(value = "execution(* com.huanggit.service..*insert*(..))")
     private void insertMybatisAop(){}
 
+    /**
+     * 匹配 com.huanggit.service 包下的以update开头的方法
+     */
     @Pointcut(value = "execution(* com.huanggit.service..*update*(..))")
     private void updateMybatisAop(){}
 
@@ -50,10 +56,10 @@ public class MybatisAop {
                         } catch (IllegalAccessException e) {
                             throw new BusinessException("无法访问表"+c.getName()+"的"+field.getName()+"字段",ResultCode.FIELD_CAN_NOT_ACCESS);
                         }
-                        if (mybatisColumn.nullable() && value == null) {
+                        if (!mybatisColumn.nullable() && value == null) {
                             throw new BusinessException("表"+c.getName()+"的"+field.getName()+"字段不能为空",ResultCode.FIELD_CAN_NOT_NULL);
                         }
-                        if (value.length() > mybatisColumn.length()) {
+                        if ((value != null) && (value.length() > mybatisColumn.length())) {
                             throw new BusinessException("表"+c.getName()+"的"+field.getName()+"字段超长",ResultCode.FIELD_OVER_LENGTH);
                         }
                     }

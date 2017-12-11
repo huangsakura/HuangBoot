@@ -28,9 +28,9 @@ public class MainTests {
 	@Test
 	public void testInsertApo() {
 		Continent continent = new Continent();
-		continent.setCode("ABB");
+		continent.setCode("AC");
 		continent.setName("AAsia");
-		continent.setChineseName("压延州");
+		continent.setChineseName("压延州压延州压延州压延州压延州压延州压延");
 		continent.setCreateTime(new Date());
 		try {
 			continentService.insert(continent);

@@ -18,26 +18,36 @@ public class Country extends BaseEntity {
     @MybatisColumn(length = 3,nullable = false)
     private String alpha3Code;
 
+    @MybatisColumn(length = 128,nullable = false)
     private String name;
 
+    @MybatisColumn(length = 128)
     private String fullName;
 
+    @MybatisColumn(length = 32)
     private String chineseName;
 
+    @MybatisColumn(length = 64)
     private String chineseFullName;
 
+    @MybatisColumn(length = 32,nullable = false)
     private String capitalName;
 
+    @MybatisColumn(length = 32)
     private String capitalChineseName;
 
+    @MybatisColumn(length = 10)
     private Integer population;
 
+    @MybatisColumn(length = 2,nullable = false)
     private String continentCode;
 
     /**
      * 国家面积，（平方公里）
      */
+    @MybatisColumn(length = 10)
     private String area;
 
+    @MybatisColumn(length = 64)
     private String nationalFlag;
 }
