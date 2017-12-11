@@ -1,6 +1,7 @@
 package com.huanggit.service;
 
 import com.huanggit.domain.dao.ContinentDao;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -28,7 +29,10 @@ public class ContinentService {
         return continentDao.update(pojo);
     }
 
-    public List<Continent> findAll() {
-        return continentDao.findAll();
+    public List<Continent> load(String code,String name) {
+        Continent continent = new Continent();
+        continent.setCode(code);
+        continent.setName(name);
+        return continentDao.findSelective(continent);
     }
 }

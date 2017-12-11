@@ -27,4 +27,6 @@ public interface ContinentDao {
 
     @Select("SELECT * FROM Continent ")
     List<Continent> findAll();
+
+    List<Continent> findSelective(@Param("pojo") Continent pojo);
 }
