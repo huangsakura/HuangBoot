@@ -1,7 +1,6 @@
-package com.huanggit.domain.repository;
+package com.huanggit.domain.dao;
 
 import com.huanggit.domain.entity.Continent;
-import com.huanggit.domain.repository.base.BaseJpaRepository;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -9,10 +8,10 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * Created by huang on 2017-12-08-0008.
+ * Created by huang on 2017-12-11-0011.
  */
 @Mapper
-public interface ContinentRepository extends BaseJpaRepository<Continent> {
+public interface ContinentDao {
 
     int insert(@Param("pojo") Continent pojo);
 
@@ -22,9 +21,9 @@ public interface ContinentRepository extends BaseJpaRepository<Continent> {
 
     int update(@Param("pojo") Continent pojo);
 
-    //List<Continent> find();
+    List<Continent> find();
 
-    //List<Continent> findCodeAndNameAndChineseName();
+    List<Continent> findCodeAndNameAndChineseName();
 
     @Select("SELECT * FROM Continent ")
     List<Continent> findAll();

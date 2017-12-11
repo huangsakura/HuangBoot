@@ -1,6 +1,6 @@
 package com.huanggit.service;
 
-import com.huanggit.domain.repository.ContinentRepository;
+import com.huanggit.domain.dao.ContinentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -10,25 +10,25 @@ import com.huanggit.domain.entity.Continent;
 public class ContinentService {
 
     @Autowired
-    private ContinentRepository continentRepository;
+    private ContinentDao continentDao;
 
     public int insert(Continent pojo){
-        return continentRepository.insert(pojo);
+        return continentDao.insert(pojo);
     }
 
     public int insertSelective(Continent pojo){
-        return continentRepository.insertSelective(pojo);
+        return continentDao.insertSelective(pojo);
     }
 
     public int insertList(List<Continent> pojos){
-        return continentRepository.insertList(pojos);
+        return continentDao.insertList(pojos);
     }
 
     public int update(Continent pojo){
-        return continentRepository.update(pojo);
+        return continentDao.update(pojo);
     }
 
     public List<Continent> findAll() {
-        return continentRepository.findAll();
+        return continentDao.findAll();
     }
 }
