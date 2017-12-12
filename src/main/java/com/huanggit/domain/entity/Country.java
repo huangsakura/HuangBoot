@@ -5,6 +5,8 @@ import com.huanggit.annotation.MybatisColumn;
 import com.huanggit.domain.entity.base.BaseEntity;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * Created by huang on 2017-11-20-0020.
  */
@@ -36,7 +38,7 @@ public class Country extends BaseEntity {
     @MybatisColumn(length = 32)
     private String capitalChineseName;
 
-    @MybatisColumn(length = 10)
+    @MybatisColumn(length = 10,min = 1)
     private Integer population;
 
     @MybatisColumn(length = 2,nullable = false)
@@ -50,4 +52,7 @@ public class Country extends BaseEntity {
 
     @MybatisColumn(length = 64)
     private String nationalFlag;
+
+    @MybatisColumn
+    private Date nationalDay;
 }

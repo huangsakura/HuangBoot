@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.domain.dao.CountryDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.domain.entity.Country">
+        <result column="alpha2_code" property="alpha2Code"/>
+        <result column="alpha3_code" property="alpha3Code"/>
+        <result column="name" property="name"/>
+        <result column="full_name" property="fullName"/>
+        <result column="chinese_name" property="chineseName"/>
+        <result column="chinese_full_name" property="chineseFullName"/>
+        <result column="capital_name" property="capitalName"/>
+        <result column="capital_chinese_name" property="capitalChineseName"/>
+        <result column="population" property="population"/>
+        <result column="continent_code" property="continentCode"/>
+        <result column="area" property="area"/>
+        <result column="national_flag" property="nationalFlag"/>
+        <result column="national_day" property="nationalDay"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `alpha2_code`,
+        `alpha3_code`,
+        `name`,
+        `full_name`,
+        `chinese_name`,
+        `chinese_full_name`,
+        `capital_name`,
+        `capital_chinese_name`,
+        `population`,
+        `continent_code`,
+        `area`,
+        `national_flag`,
+        `national_day`,
+        `id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO country (
+            `alpha2_code`,
+            `alpha3_code`,
+            `name`,
+            `full_name`,
+            `chinese_name`,
+            `chinese_full_name`,
+            `capital_name`,
+            `capital_chinese_name`,
+            `population`,
+            `continent_code`,
+            `area`,
+            `national_flag`,
+            `national_day`,
+            `id`,
+            `create_time`
+        ) VALUES (
+            #{pojo.alpha2Code},
+            #{pojo.alpha3Code},
+            #{pojo.name},
+            #{pojo.fullName},
+            #{pojo.chineseName},
+            #{pojo.chineseFullName},
+            #{pojo.capitalName},
+            #{pojo.capitalChineseName},
+            #{pojo.population},
+            #{pojo.continentCode},
+            #{pojo.area},
+            #{pojo.nationalFlag},
+            #{pojo.nationalDay},
+            #{pojo.id},
+            #{pojo.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO country
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.alpha2Code!=null"> `alpha2_code`,</if>
+            <if test="pojo.alpha3Code!=null"> `alpha3_code`,</if>
+            <if test="pojo.name!=null"> `name`,</if>
+            <if test="pojo.fullName!=null"> `full_name`,</if>
+            <if test="pojo.chineseName!=null"> `chinese_name`,</if>
+            <if test="pojo.chineseFullName!=null"> `chinese_full_name`,</if>
+            <if test="pojo.capitalName!=null"> `capital_name`,</if>
+            <if test="pojo.capitalChineseName!=null"> `capital_chinese_name`,</if>
+            <if test="pojo.population!=null"> `population`,</if>
+            <if test="pojo.continentCode!=null"> `continent_code`,</if>
+            <if test="pojo.area!=null"> `area`,</if>
+            <if test="pojo.nationalFlag!=null"> `national_flag`,</if>
+            <if test="pojo.nationalDay!=null"> `national_day`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.alpha2Code!=null">#{pojo.alpha2Code},</if>
+            <if test="pojo.alpha3Code!=null">#{pojo.alpha3Code},</if>
+            <if test="pojo.name!=null">#{pojo.name},</if>
+            <if test="pojo.fullName!=null">#{pojo.fullName},</if>
+            <if test="pojo.chineseName!=null">#{pojo.chineseName},</if>
+            <if test="pojo.chineseFullName!=null">#{pojo.chineseFullName},</if>
+            <if test="pojo.capitalName!=null">#{pojo.capitalName},</if>
+            <if test="pojo.capitalChineseName!=null">#{pojo.capitalChineseName},</if>
+            <if test="pojo.population!=null">#{pojo.population},</if>
+            <if test="pojo.continentCode!=null">#{pojo.continentCode},</if>
+            <if test="pojo.area!=null">#{pojo.area},</if>
+            <if test="pojo.nationalFlag!=null">#{pojo.nationalFlag},</if>
+            <if test="pojo.nationalDay!=null">#{pojo.nationalDay},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO country (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.alpha2Code},
+            #{pojo.alpha3Code},
+            #{pojo.name},
+            #{pojo.fullName},
+            #{pojo.chineseName},
+            #{pojo.chineseFullName},
+            #{pojo.capitalName},
+            #{pojo.capitalChineseName},
+            #{pojo.population},
+            #{pojo.continentCode},
+            #{pojo.area},
+            #{pojo.nationalFlag},
+            #{pojo.nationalDay},
+            #{pojo.id},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE country
+        <set>
+            <if test="pojo.alpha2Code != null"> `alpha2_code` = #{pojo.alpha2Code}, </if>
+            <if test="pojo.alpha3Code != null"> `alpha3_code` = #{pojo.alpha3Code}, </if>
+            <if test="pojo.name != null"> `name` = #{pojo.name}, </if>
+            <if test="pojo.fullName != null"> `full_name` = #{pojo.fullName}, </if>
+            <if test="pojo.chineseName != null"> `chinese_name` = #{pojo.chineseName}, </if>
+            <if test="pojo.chineseFullName != null"> `chinese_full_name` = #{pojo.chineseFullName}, </if>
+            <if test="pojo.capitalName != null"> `capital_name` = #{pojo.capitalName}, </if>
+            <if test="pojo.capitalChineseName != null"> `capital_chinese_name` = #{pojo.capitalChineseName}, </if>
+            <if test="pojo.population != null"> `population` = #{pojo.population}, </if>
+            <if test="pojo.continentCode != null"> `continent_code` = #{pojo.continentCode}, </if>
+            <if test="pojo.area != null"> `area` = #{pojo.area}, </if>
+            <if test="pojo.nationalFlag != null"> `national_flag` = #{pojo.nationalFlag}, </if>
+            <if test="pojo.nationalDay != null"> `national_day` = #{pojo.nationalDay}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="findSelective" resultMap="AllColumnMap">
+        SELECT * FROM country
+        <where>
+            1=1
+            <if test="pojo.alpha2Code != null and pojo.alpha2Code !=''">AND `alpha2_code` = #{pojo.alpha2Code}</if>
+            <if test="pojo.alpha3Code != null and pojo.alpha3Code !=''">AND `alpha3_code` = #{pojo.alpha3Code}</if>
+            <if test="pojo.name != null and pojo.name !=''">AND `name` = #{pojo.name} </if>
+            <if test="pojo.fullName != null and pojo.fullName !=''">AND `full_name` = #{pojo.fullName} </if>
+            <if test="pojo.chineseName != null and pojo.chineseName !=''">AND `chinese_name` = #{pojo.chineseName} </if>
+            <if test="pojo.chineseFullName != null and pojo.chineseFullName !=''">AND `chinese_full_name` = #{pojo.chineseFullName} </if>
+            <if test="pojo.capitalName != null and pojo.capitalName !=''">AND `capital_name` = #{pojo.capitalName} </if>
+            <if test="pojo.capitalChineseName != null and pojo.capitalChineseName !=''">AND `capital_chinese_name` = #{pojo.capitalChineseName} </if>
+            <if test="pojo.population != null">AND `population` = #{pojo.population} </if>
+            <if test="pojo.continentCode != null and pojo.continentCode !=''">AND `continent_code` = #{pojo.continentCode} </if>
+            <if test="pojo.area != null and pojo.area !=''">AND `area` = #{pojo.area} </if>
+            <if test="pojo.nationalFlag != null and pojo.nationalFlag !=''">AND `national_flag` = #{pojo.nationalFlag} </if>
+            <if test="pojo.nationalDay != null">AND `national_day` = #{pojo.nationalDay} </if>
+            <if test="pojo.id != null">AND `id` = #{pojo.id} </if>
+        </where>
+    </select>
+</mapper>
+

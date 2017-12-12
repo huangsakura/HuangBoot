@@ -1,8 +1,10 @@
 package com.huanggit;
 
 import com.huanggit.domain.entity.Continent;
+import com.huanggit.domain.entity.Country;
 import com.huanggit.exception.BusinessException;
 import com.huanggit.service.ContinentService;
+import com.huanggit.service.CountryService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +21,8 @@ public class MainTests {
 
 	@Autowired
 	private ContinentService continentService;
+	@Autowired
+	private CountryService countryService;
 
 	@Test
 	public void contextLoads() {
@@ -34,6 +38,21 @@ public class MainTests {
 		continent.setCreateTime(new Date());
 		try {
 			continentService.insert(continent);
+		} catch (BusinessException e) {
+			log.error("{}",e.getMessage());
+		}
+	}
+
+	@Test
+	public void testCountryInsert() {
+		Country country = new Country();
+		country.setAlpha2Code("CN");
+		country.setAlpha3Code("CHN");
+		country.setName("China");
+		country.setCapitalName("Beijing");
+		country.setContinentCode("AS");
+		try {
+			countryService.insert(country);
 		} catch (BusinessException e) {
 			log.error("{}",e.getMessage());
 		}
