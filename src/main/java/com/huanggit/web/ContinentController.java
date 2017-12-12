@@ -1,6 +1,7 @@
 package com.huanggit.web;
 
 import com.huanggit.annotation.OperationLog;
+import com.huanggit.general.constant.GeneralConstant;
 import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.service.ContinentService;
 import io.swagger.annotations.Api;
@@ -26,7 +27,7 @@ public class ContinentController {
     public JsonResult load(@RequestParam(value = "code",required = false) String code,
             @RequestParam(value = "name",required = false) String name) {
         JsonResult jsonResult = new JsonResult();
-        jsonResult.appendData("data", continentService.load(code,name));
+        jsonResult.appendData(GeneralConstant.DATA_STRING, continentService.load(code,name));
         return jsonResult;
     }
 }

@@ -1,6 +1,7 @@
 package com.huanggit.util;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -10,12 +11,12 @@ public class DateUtil {
 
     private DateUtil(){}
 
-    private static final String CHINESE_DATE_FORMAT_LINE = "yyyy-MM-dd";
-    private static final String CHINESE_DATETIME_FORMAT_LINE = "yyyy-MM-dd HH:mm:ss";
-    private static final String CHINESE_DATE_FORMAT_SLASH = "yyyy/MM/dd";
-    private static final String CHINESE_DATETIME_FORMAT_SLASH = "yyyy/MM/dd HH:mm:ss";
-    private static final String DATETIME_NOT_SEPARATOR = "yyyyMMddHHmmssSSS";
-    private static final String DATE_NOT_SEPARATOR = "yyyyMMdd";
+    public static final String CHINESE_DATE_FORMAT_LINE = "yyyy-MM-dd";
+    public static final String CHINESE_DATETIME_FORMAT_LINE = "yyyy-MM-dd HH:mm:ss";
+    public static final String CHINESE_DATE_FORMAT_SLASH = "yyyy/MM/dd";
+    public static final String CHINESE_DATETIME_FORMAT_SLASH = "yyyy/MM/dd HH:mm:ss";
+    public static final String DATETIME_NOT_SEPARATOR = "yyyyMMddHHmmssSSS";
+    public static final String DATE_NOT_SEPARATOR = "yyyyMMdd";
 
     private static SimpleDateFormat SDF_CHINESE_DATE_FORMAT_LINE;
     private static SimpleDateFormat SDF_CHINESE_DATETIME_FORMAT_LINE;
@@ -73,5 +74,22 @@ public class DateUtil {
                 throw new UnsupportedOperationException();
             }
         }
+    }
+
+    public static Date igoreTime(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.set(Calendar.HOUR,0);
+        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.SECOND,0);
+        calendar.set(Calendar.MILLISECOND,0);
+        return calendar.getTime();
+    }
+
+    public static Date igoreTime(int year,int month,int date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(year,month-1,date,0,0,0);
+        calendar.set(Calendar.MILLISECOND,0);
+        return calendar.getTime();
     }
 }

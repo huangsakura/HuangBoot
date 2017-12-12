@@ -1,8 +1,10 @@
 package com.huanggit.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.huanggit.annotation.MybatisColumn;
 import com.huanggit.domain.entity.base.BaseEntity;
+import com.huanggit.util.DateUtil;
 import lombok.Data;
 
 import java.util.Date;
@@ -53,6 +55,7 @@ public class Country extends BaseEntity {
     @MybatisColumn(length = 64)
     private String nationalFlag;
 
+    @JsonFormat(pattern = DateUtil.CHINESE_DATE_FORMAT_LINE)
     @MybatisColumn
     private Date nationalDay;
 }

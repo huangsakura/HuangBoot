@@ -1,6 +1,7 @@
 package com.huanggit.web;
 
 import com.huanggit.annotation.OperationLog;
+import com.huanggit.general.constant.GeneralConstant;
 import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.service.CountryService;
 import io.swagger.annotations.Api;
@@ -25,7 +26,7 @@ public class CountryController {
     @ApiOperation(value = "根据条件查询国家的信息",notes = "如果条件为空则查询全部的国家")
     public JsonResult load() {
         JsonResult jsonResult = new JsonResult();
-        jsonResult.appendData("data", countryService.find());
+        jsonResult.appendData(GeneralConstant.DATA_STRING, countryService.find());
         return jsonResult;
     }
 }

@@ -5,6 +5,7 @@ import com.huanggit.domain.entity.Country;
 import com.huanggit.exception.BusinessException;
 import com.huanggit.service.ContinentService;
 import com.huanggit.service.CountryService;
+import com.huanggit.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,11 +47,12 @@ public class MainTests {
 	@Test
 	public void testCountryInsert() {
 		Country country = new Country();
-		country.setAlpha2Code("CN");
-		country.setAlpha3Code("CHN");
-		country.setName("China");
-		country.setCapitalName("Beijing");
-		country.setContinentCode("AS");
+		country.setAlpha2Code("FR");
+		country.setAlpha3Code("FRA");
+		country.setName("France");
+		country.setCapitalName("Paris");
+		country.setContinentCode("EU");
+		country.setNationalDay(DateUtil.igoreTime(1945,7,14));
 		try {
 			countryService.insert(country);
 		} catch (BusinessException e) {

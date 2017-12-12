@@ -16,5 +16,5 @@ public abstract class BaseEntity implements Serializable {
     private Long id;
 
     @JsonIgnore
-    private Date createTime;
+    private Date createTime = new Date();
 }

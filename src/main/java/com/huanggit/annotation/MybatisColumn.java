@@ -34,6 +34,7 @@ public @interface MybatisColumn {
             if (o instanceof String || o instanceof Integer || o instanceof Long || o instanceof BigDecimal) {
                 return true;
             }
+            constraintValidatorContext.buildConstraintViolationWithTemplate("").addConstraintViolation();
             return false;
         }
     }
