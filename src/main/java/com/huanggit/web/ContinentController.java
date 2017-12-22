@@ -1,6 +1,7 @@
 package com.huanggit.web;
 
 import com.huanggit.annotation.OperationLog;
+import com.huanggit.configuration.FileServerConfig;
 import com.huanggit.general.constant.GeneralConstant;
 import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.service.ContinentService;
@@ -19,6 +20,8 @@ public class ContinentController {
 
     @Autowired
     private ContinentService continentService;
+    @Autowired
+    private FileServerConfig fileServerConfig;
 
     @RequestMapping(value = "/load",method = RequestMethod.GET,produces = "application/json")
     @ResponseBody
@@ -27,6 +30,7 @@ public class ContinentController {
     public JsonResult load(@RequestParam(value = "code",required = false) String code,
             @RequestParam(value = "name",required = false) String name) {
         JsonResult jsonResult = new JsonResult();
+        System.out.println(fileServerConfig.getServerRoot());
         jsonResult.appendData(GeneralConstant.DATA_STRING, continentService.load(code,name));
         return jsonResult;
     }

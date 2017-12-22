@@ -12,6 +12,7 @@ public enum ResultCode {
     FIELD_UNDER_MIN("FIELD_UNDER_MIN","字段值小于允许的最小值"),
     FIELD_CAN_NOT_NULL("FIELD_CAN_NOT_NULL","字段不能为空"),
     FIELD_CAN_NOT_ACCESS("FIELD_CAN_NOT_ACCESS","字段不可访问"),
+    OBJECT_NOT_EXIST("OBJECT_NOT_EXIST","对象不存在"),
     OTHER("OTHER","其他");
 
 

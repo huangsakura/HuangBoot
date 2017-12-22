@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.domain.dao.SubwayLineStationDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.domain.entity.SubwayLineStation">
+        <result column="station_code" property="stationCode"/>
+        <result column="line_number" property="lineNumber"/>
+        <result column="open_date" property="openDate"/>
+        <result column="station_sort_number" property="stationSortNumber"/>
+        <result column="away_from_prev_station" property="awayFromPrevStation"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `station_code`,
+        `line_number`,
+        `open_date`,
+        `station_sort_number`,
+        `away_from_prev_station`,
+        `id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO railway_line_station (
+            `station_code`,
+            `line_number`,
+            `open_date`,
+            `station_sort_number`,
+            `away_from_prev_station`,
+            `id`,
+            `create_time`
+        ) VALUES (
+            #{pojo.stationCode},
+            #{pojo.lineNumber},
+            #{pojo.openDate},
+            #{pojo.stationSortNumber},
+            #{pojo.awayFromPrevStation},
+            #{pojo.id},
+            #{pojo.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO railway_line_station
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.stationCode!=null"> `station_code`,</if>
+            <if test="pojo.lineNumber!=null"> `line_number`,</if>
+            <if test="pojo.openDate!=null"> `open_date`,</if>
+            <if test="pojo.stationSortNumber!=null"> `station_sort_number`,</if>
+            <if test="pojo.awayFromPrevStation!=null"> `away_from_prev_station`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.stationCode!=null">#{pojo.stationCode},</if>
+            <if test="pojo.lineNumber!=null">#{pojo.lineNumber},</if>
+            <if test="pojo.openDate!=null">#{pojo.openDate},</if>
+            <if test="pojo.stationSortNumber!=null">#{pojo.stationSortNumber},</if>
+            <if test="pojo.awayFromPrevStation!=null">#{pojo.awayFromPrevStation},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO railway_line_station (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.stationCode},
+            #{pojo.lineNumber},
+            #{pojo.openDate},
+            #{pojo.stationSortNumber},
+            #{pojo.awayFromPrevStation},
+            #{pojo.id},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE railway_line_station
+        <set>
+            <if test="pojo.stationCode != null"> `station_code` = #{pojo.stationCode}, </if>
+            <if test="pojo.lineNumber != null"> `line_number` = #{pojo.lineNumber}, </if>
+            <if test="pojo.openDate != null"> `open_date` = #{pojo.openDate}, </if>
+            <if test="pojo.stationSortNumber != null"> `station_sort_number` = #{pojo.stationSortNumber}, </if>
+            <if test="pojo.awayFromPrevStation != null"> `away_from_prev_station` = #{pojo.awayFromPrevStation}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+
+    <select id="findSelective" resultMap="AllColumnMap">
+        SELECT * FROM railway_line_station
+        <where>
+            1=1
+            <if test="pojo.stationCode != null and pojo.stationCode !=''">AND `station_code` = #{pojo.stationCode} </if>
+            <if test="pojo.lineNumber != null">AND `line_number` = #{pojo.lineNumber} </if>
+            <if test="pojo.openDate != null">AND `open_date` = #{pojo.openDate} </if>
+            <if test="pojo.stationSortNumber != null">AND `station_sort_number` = #{pojo.stationSortNumber} </if>
+            <if test="pojo.awayFromPrevStation != null">AND `away_from_prev_station` = #{pojo.awayFromPrevStation} </if>
+            <if test="pojo.id != null">AND `id` = #{pojo.id} </if>
+        </where>
+    </select>
+
+<!--auto generated by codehelper on 2017-12-19 13:25:28-->
+    <select id="findByStationCode" resultMap="AllColumnMap">
+        select *
+        from railway_line_station
+        <where>
+            `station_code` = #{stationCode}
+        </where>
+    </select>
+
+    <select id="findOpenByStationCode" resultMap="AllColumnMap">
+        select *
+        from railway_line_station
+        <where>
+            `station_code` = #{stationCode} AND open_date &lt;= now()
+        </where>
+    </select>
+
+    <!--auto generated by codehelper on 2017-12-19 14:35:34-->
+    <select id="findByLineNumberOrderByStationSortNumber" resultMap="AllColumnMap">
+        select
+        <include refid="all_column"/>
+        from railway_line_station
+        where `line_number`=#{lineNumber} order by `station_sort_number` asc
+    </select>
+</mapper>
+
