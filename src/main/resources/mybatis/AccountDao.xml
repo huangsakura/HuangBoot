@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.domain.dao.AccountDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.domain.entity.Account">
+        <result column="country_alpha3_code" property="countryAlpha3Code"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `country_alpha3_code`,
+        `id`,
+        `amount`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO account (
+            `country_alpha3_code`,
+            `id`,
+            `amount`,
+            `create_time`
+        ) VALUES (
+            #{pojo.countryAlpha3Code},
+            #{pojo.id},
+            #{pojo.amount},
+            #{pojo.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.countryAlpha3Code!=null"> `country_alpha3_code`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.amount!=null"> `amount`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.countryAlpha3Code!=null">#{pojo.countryAlpha3Code},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.amount!=null">#{pojo.amount},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO account (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.countryAlpha3Code},
+            #{pojo.id},
+            #{pojo.amount},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE account
+        <set>
+            <if test="pojo.countryAlpha3Code != null"> `country_alpha3_code` = #{pojo.countryAlpha3Code}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.amount != null"> `id` = #{pojo.amount}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+
