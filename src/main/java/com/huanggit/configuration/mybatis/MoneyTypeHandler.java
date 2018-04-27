@@ -1,4 +1,4 @@
-package com.huanggit.mybatis;
+package com.huanggit.configuration.mybatis;
 
 import com.huanggit.general.dto.common.Money;
 import org.apache.ibatis.type.BaseTypeHandler;

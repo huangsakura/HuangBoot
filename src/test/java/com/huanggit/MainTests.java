@@ -1,8 +1,11 @@
 package com.huanggit;
 
+import com.huanggit.domain.entity.Account;
 import com.huanggit.domain.entity.Continent;
 import com.huanggit.domain.entity.Country;
 import com.huanggit.exception.BusinessException;
+import com.huanggit.general.dto.common.Money;
+import com.huanggit.service.AccountService;
 import com.huanggit.service.ContinentService;
 import com.huanggit.service.CountryService;
 import com.huanggit.util.DateUtil;
@@ -13,9 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Slf4j
 @RunWith(SpringRunner.class)
@@ -26,6 +27,8 @@ public class MainTests {
 	private ContinentService continentService;
 	@Autowired
 	private CountryService countryService;
+	@Autowired
+	private AccountService accountService;
 
 	@Test
 	public void contextLoads() {
@@ -60,5 +63,13 @@ public class MainTests {
 		} catch (BusinessException e) {
 			log.error("{}",e.getMessage());
 		}
+	}
+
+	@Test
+	public void testAccountInsert() {
+		Account account = new Account();
+		account.setCountryAlpha3Code("CHN");
+		account.setAmount(Money.cent(10000L));
+		accountService.insert(account);
 	}
 }

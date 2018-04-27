@@ -1,5 +1,7 @@
 package com.huanggit.general.dto.common;
 
+import com.huanggit.exception.BusinessException;
+
 import java.io.Serializable;
 
 /**
@@ -26,9 +28,7 @@ public class Money implements Serializable {
     }
 
     public static Money cent(Long t_cent) {
-        Money money = new Money();
-        money.setCent(t_cent);
-        return money;
+        return new Money(t_cent);
     }
 
     @Override
@@ -37,5 +37,24 @@ public class Money implements Serializable {
             return false;
         }
         return this.cent.compareTo(((Money)obj).getCent()) == 0;
+    }
+
+    public Money add(Money other) {
+        if (1 == 1) {
+            throw new BusinessException("测试");
+        }
+        return Money.cent(this.cent + other.cent);
+    }
+
+    public Money subtract(Money other) {
+        if (this.cent.compareTo(other.cent) < 0) {
+            throw new BusinessException("被减数不能小于减数");
+        }
+        return Money.cent(this.cent - other.cent);
+    }
+
+    @Override
+    public String toString() {
+        return String.valueOf(this.cent);
     }
 }

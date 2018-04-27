@@ -1,6 +1,7 @@
 package com.huanggit.configuration;
 
 import com.huanggit.service.SysUserService;
+import com.huanggit.service.impl.SysUserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        return new SysUserService();
+        return new SysUserServiceImpl();
     }
 
     @Override

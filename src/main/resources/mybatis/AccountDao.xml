@@ -68,10 +68,8 @@
     <update id="update">
         UPDATE account
         <set>
-            <if test="pojo.countryAlpha3Code != null"> `country_alpha3_code` = #{pojo.countryAlpha3Code}, </if>
-            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
-            <if test="pojo.amount != null"> `id` = #{pojo.amount}, </if>
-            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+            <if test="pojo.countryAlpha3Code != null and pojo.countryAlpha3Code!=''"> `country_alpha3_code` = #{pojo.countryAlpha3Code}, </if>
+            <if test="pojo.amount != null"> `amount` = #{pojo.amount} </if>
         </set>
         WHERE id = #{pojo.id}
     </update>

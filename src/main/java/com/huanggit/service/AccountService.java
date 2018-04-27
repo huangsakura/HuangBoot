@@ -1,10 +1,9 @@
 package com.huanggit.service;
 
-import org.springframework.stereotype.Service;
+import com.huanggit.general.dto.common.Money;
 import java.util.List;
 import com.huanggit.domain.entity.Account;
 
-@Service
 public interface AccountService{
 
     public int insert(Account pojo);
@@ -14,4 +13,10 @@ public interface AccountService{
     public int insertList(List<Account> pojos);
 
     public int update(Account pojo);
+
+    Account addAmount(String countryAlpha3Code,Money amount);
+
+    Account reduceAmount(String countryAlpha3Code,Money amount);
+
+    void transfer(String countryAlpha3Code,String otherCountryAlpha3Code,Money amount);
 }
