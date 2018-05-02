@@ -23,18 +23,34 @@ public @interface MybatisColumn {
 
     long min() default 0;
 
-    class TypeChecker implements ConstraintValidator<MybatisColumn,Object> {
+    public static class TypeChecker implements ConstraintValidator<MybatisColumn,Object> {
+        private MybatisColumn t_mybatisColumn;
+
         @Override
         public void initialize(MybatisColumn annotation) {
-
+            t_mybatisColumn = annotation;
         }
 
         @Override
         public boolean isValid(Object o, ConstraintValidatorContext constraintValidatorContext) {
-            if (o instanceof String || o instanceof Integer || o instanceof Long || o instanceof BigDecimal) {
-                return true;
+            if (!t_mybatisColumn.nullable()) {
+                if (o == null) {
+                    return false;
+                }
             }
-            constraintValidatorContext.buildConstraintViolationWithTemplate("").addConstraintViolation();
+
+            if (o instanceof String || o instanceof Integer || o instanceof Long || o instanceof BigDecimal) {
+                BigDecimal bigDecimal = null;
+                if (o instanceof BigDecimal) {
+                    bigDecimal = (BigDecimal)o;
+                } else if (o instanceof Integer || o instanceof Long) {
+                    bigDecimal = new BigDecimal(o.toString());
+                }
+                if (bigDecimal.compareTo(new BigDecimal(t_mybatisColumn.min())) < 0) {
+                    return false;
+                }
+            }
+            //constraintValidatorContext.buildConstraintViolationWithTemplate("").addConstraintViolation();
             return false;
         }
     }
