@@ -18,5 +18,5 @@ public interface AccountService{
 
     Account reduceAmount(String countryAlpha3Code,Money amount);
 
-    void transfer(String countryAlpha3Code,String otherCountryAlpha3Code,Money amount);
+    Account getAndLock(String countryAlpha3Code);
 }

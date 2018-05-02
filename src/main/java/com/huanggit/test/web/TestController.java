@@ -3,6 +3,7 @@ package com.huanggit.test.web;
 import com.huanggit.general.dto.common.JsonResult;
 import com.huanggit.general.dto.common.Money;
 import com.huanggit.service.AccountService;
+import com.huanggit.test.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ public class TestController {
 
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private TestService testService;
 
     @RequestMapping(value = "/addAmount",method = RequestMethod.GET,produces = "application/json")
     @ResponseBody
@@ -53,6 +56,14 @@ public class TestController {
                 accountService.addAmount("CHN", Money.cent(104L));
             }
         }).start();
+        return jsonResult;
+    }
+
+    @RequestMapping(value = "/test1",method = RequestMethod.GET,produces = "application/json")
+    @ResponseBody
+    public JsonResult test1() {
+        JsonResult jsonResult = new JsonResult();
+        testService.test1();
         return jsonResult;
     }
 }

@@ -6,7 +6,6 @@ import com.huanggit.enumeration.common.ResultCode;
 import com.huanggit.exception.BusinessException;
 import com.huanggit.general.dto.common.Money;
 import com.huanggit.service.AccountService;
-import jdk.nashorn.internal.runtime.ECMAException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,26 +56,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public void transfer(String countryAlpha3Code,String otherCountryAlpha3Code, Money amount) {
-        Account accountFrom = accountDao.getAndLock(countryAlpha3Code);
-        if (null == accountFrom) {
-            throw new BusinessException("转出国家不存在", ResultCode.OBJECT_NOT_EXIST);
-        }
-
-        Account accountTo = accountDao.getAndLock(otherCountryAlpha3Code);
-        if (null == accountTo) {
-            throw new BusinessException("转入国家不存在", ResultCode.OBJECT_NOT_EXIST);
-        }
-
-        accountFrom.setAmount(accountFrom.getAmount().subtract(amount));
-        accountDao.update(accountFrom);
-
-
-        try {
-            accountTo.setAmount(accountTo.getAmount().add(amount));
-        } catch (Exception e) {
-
-        }
-        accountDao.update(accountTo);
+    public Account getAndLock(String countryAlpha3Code) {
+        return accountDao.getAndLock(countryAlpha3Code);
     }
 }

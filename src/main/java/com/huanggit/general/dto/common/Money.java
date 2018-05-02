@@ -40,9 +40,6 @@ public class Money implements Serializable {
     }
 
     public Money add(Money other) {
-        if (1 == 1) {
-            throw new BusinessException("测试");
-        }
         return Money.cent(this.cent + other.cent);
     }
 

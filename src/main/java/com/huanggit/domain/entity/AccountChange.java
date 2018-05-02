@@ -2,6 +2,7 @@ package com.huanggit.domain.entity;
 
 import com.huanggit.annotation.MybatisColumn;
 import com.huanggit.domain.entity.base.BaseEntity;
+import com.huanggit.enumeration.account.TransCode;
 import com.huanggit.general.dto.common.Money;
 import lombok.Data;
 
@@ -19,4 +20,9 @@ public class AccountChange extends BaseEntity {
     private Money amount;
 
     private Money amountAfter;
+
+    private TransCode transCode;
+
+    @MybatisColumn(length = 3,nullable = false)
+    private String refCountryAlpha3Code;
 }

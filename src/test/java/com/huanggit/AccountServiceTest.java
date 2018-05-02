@@ -1,6 +1,7 @@
 package com.huanggit;
 
 import com.huanggit.general.dto.common.Money;
+import com.huanggit.service.AccountChangeService;
 import com.huanggit.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -19,6 +20,8 @@ public class AccountServiceTest {
 
     @Autowired
     private AccountService accountService;
+    @Autowired
+    private AccountChangeService accountChangeService;
 
     @Test
     public void testAdd() {
@@ -57,6 +60,6 @@ public class AccountServiceTest {
 
     @Test
     public void testTransfer() {
-        accountService.transfer("CHN","USA",Money.cent(50L));
+        accountChangeService.transfer("CHN","USA",Money.cent(50L));
     }
 }

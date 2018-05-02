@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.domain.dao.AccountChangeDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.domain.entity.AccountChange">
+        <result column="country_alpha3_code" property="countryAlpha3Code"/>
+        <result column="trans_code" property="transCode"/>
+        <result column="ref_country_alpha3_code" property="refCountryAlpha3Code"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `country_alpha3_code`,
+        `trans_code`,
+        `ref_country_alpha3_code`,
+        `id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO account_change (
+            `country_alpha3_code`,
+            `trans_code`,
+            `ref_country_alpha3_code`,
+            `id`,
+            `create_time`
+        ) VALUES (
+            #{pojo.countryAlpha3Code},
+            #{pojo.transCode},
+            #{pojo.refCountryAlpha3Code},
+            #{pojo.id},
+            #{pojo.createTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO account_change
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.countryAlpha3Code!=null"> `country_alpha3_code`,</if>
+            <if test="pojo.transCode!=null"> `trans_code`,</if>
+            <if test="pojo.refCountryAlpha3Code!=null"> `ref_country_alpha3_code`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.countryAlpha3Code!=null">#{pojo.countryAlpha3Code},</if>
+            <if test="pojo.transCode!=null">#{pojo.transCode},</if>
+            <if test="pojo.refCountryAlpha3Code!=null">#{pojo.refCountryAlpha3Code},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO account_change (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.countryAlpha3Code},
+            #{pojo.transCode},
+            #{pojo.refCountryAlpha3Code},
+            #{pojo.id},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE account_change
+        <set>
+            <if test="pojo.countryAlpha3Code != null"> `country_alpha3_code` = #{pojo.countryAlpha3Code}, </if>
+            <if test="pojo.transCode != null"> `trans_code` = #{pojo.transCode}, </if>
+            <if test="pojo.refCountryAlpha3Code != null"> `ref_country_alpha3_code` = #{pojo.refCountryAlpha3Code}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+
