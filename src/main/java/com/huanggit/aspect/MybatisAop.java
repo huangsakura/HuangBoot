@@ -1,6 +1,6 @@
 package com.huanggit.aspect;
 
-import com.huanggit.annotation.MybatisColumn;
+import com.huanggit.annotation.ColumnConstraint;
 import com.huanggit.enumeration.common.ResultCode;
 import com.huanggit.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
@@ -51,8 +51,8 @@ public class MybatisAop {
         for (Object o : args) {
             Class c = o.getClass();
             for (Field field : c.getDeclaredFields()) {
-                if (field.isAnnotationPresent(MybatisColumn.class)) {
-                    MybatisColumn mybatisColumn = field.getAnnotation(MybatisColumn.class);
+                if (field.isAnnotationPresent(ColumnConstraint.class)) {
+                    ColumnConstraint columnConstraint = field.getAnnotation(ColumnConstraint.class);
                     field.setAccessible(true);
                     String value = null;
                     try {
@@ -60,16 +60,16 @@ public class MybatisAop {
                     } catch (IllegalAccessException e) {
                         throw new BusinessException("无法访问表"+c.getName()+"的"+field.getName()+"字段",ResultCode.FIELD_CAN_NOT_ACCESS);
                     }
-                    if (!mybatisColumn.nullable() && value == null) {
+                    if (!columnConstraint.nullable() && value == null) {
                         throw new BusinessException("表"+c.getName()+"的"+field.getName()+"字段不能为空",ResultCode.FIELD_CAN_NOT_NULL);
                     }
                     if (value != null) {
-                        if (value.length() > mybatisColumn.length()) {
+                        if (value.length() > columnConstraint.minLength()) {
                             throw new BusinessException("表"+c.getName()+"的"+field.getName()+"字段超长",ResultCode.FIELD_OVER_LENGTH);
                         }
                         if (Long.class.equals(field.getType()) || Integer.class.equals(field.getType()) || BigDecimal.class.equals(field.getType())) {
-                            if (Long.valueOf(value) < mybatisColumn.min()) {
-                                throw new BusinessException("表"+c.getName()+"的"+field.getName()+"字段的值不能小于"+mybatisColumn.min(),ResultCode.FIELD_UNDER_MIN);
+                            if (Long.valueOf(value) < columnConstraint.min()) {
+                                throw new BusinessException("表"+c.getName()+"的"+field.getName()+"字段的值不能小于"+columnConstraint.min(),ResultCode.FIELD_UNDER_MIN);
                             }
                         }
                     }

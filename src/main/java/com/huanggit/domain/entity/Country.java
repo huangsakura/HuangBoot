@@ -2,7 +2,7 @@ package com.huanggit.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.huanggit.annotation.MybatisColumn;
+import com.huanggit.annotation.ColumnConstraint;
 import com.huanggit.domain.entity.base.BaseEntity;
 import com.huanggit.util.DateUtil;
 import lombok.Data;
@@ -16,46 +16,45 @@ import java.util.Date;
 @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
 public class Country extends BaseEntity {
 
-    @MybatisColumn(length = 2,nullable = false)
+    @ColumnConstraint(maxLength = 2,minLength = 2,nullable = false)
     private String alpha2Code;
 
-    @MybatisColumn(length = 3,nullable = false)
+    @ColumnConstraint(maxLength = 3,minLength = 3,nullable = false)
     private String alpha3Code;
 
-    @MybatisColumn(length = 128,nullable = false)
+    @ColumnConstraint(maxLength = 128,nullable = false)
     private String name;
 
-    @MybatisColumn(length = 128)
+    @ColumnConstraint(maxLength = 128)
     private String fullName;
 
-    @MybatisColumn(length = 32)
+    @ColumnConstraint(maxLength = 32)
     private String chineseName;
 
-    @MybatisColumn(length = 64)
+    @ColumnConstraint(maxLength = 64)
     private String chineseFullName;
 
-    @MybatisColumn(length = 32,nullable = false)
+    @ColumnConstraint(maxLength = 32,nullable = false)
     private String capitalName;
 
-    @MybatisColumn(length = 32)
+    @ColumnConstraint(maxLength = 32)
     private String capitalChineseName;
 
-    @MybatisColumn(length = 10,min = 1)
+    @ColumnConstraint(maxLength = 10,min = 1)
     private Integer population;
 
-    @MybatisColumn(length = 2,nullable = false)
+    @ColumnConstraint(maxLength = 2,minLength = 2,nullable = false)
     private String continentCode;
 
     /**
      * 国家面积，（平方公里）
      */
-    @MybatisColumn(length = 10)
+    @ColumnConstraint(maxLength = 10)
     private String area;
 
-    @MybatisColumn(length = 64)
+    @ColumnConstraint(maxLength = 64)
     private String nationalFlag;
 
     @JsonFormat(pattern = DateUtil.CHINESE_DATE_FORMAT_LINE)
-    @MybatisColumn
     private Date nationalDay;
 }

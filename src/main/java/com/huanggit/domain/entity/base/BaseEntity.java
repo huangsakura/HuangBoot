@@ -1,6 +1,7 @@
 package com.huanggit.domain.entity.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.huanggit.annotation.ColumnConstraint;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,6 +14,7 @@ import java.util.Date;
 public abstract class BaseEntity implements Serializable {
 
     @JsonIgnore
+    @ColumnConstraint(maxLength = 20,nullable = false)
     private Long id;
 
     @JsonIgnore
