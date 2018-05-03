@@ -2,6 +2,7 @@ package com.huanggit.util;
 
 import java.util.Date;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -36,8 +37,15 @@ public class UUIDUtil {
 
         public String getTimeString() {
             //if (lock.tryLock())
-            while (!lock.tryLock()) {
-                Thread.sleep(1);
+            //while (!lock.tryLock()) {
+             //   Thread.sleep(1);
+            //}
+            try {
+                lock.tryLock(10,TimeUnit.MILLISECONDS);
+            } catch (InterruptedException e) {
+
+            } finally {
+                lock.unlock();
             }
         }
     }
