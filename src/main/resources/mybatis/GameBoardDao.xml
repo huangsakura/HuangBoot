@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.chess.domain.dao.GameBoardDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.chess.domain.entity.GameBoard">
+        <result column="game_id" property="gameId"/>
+        <result column="army" property="army"/>
+        <result column="duty" property="duty"/>
+        <result column="chess_sequence" property="chessSequence"/>
+        <result column="x" property="x"/>
+        <result column="y" property="y"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `game_id`,
+        `army`,
+        `duty`,
+        `chess_sequence`,
+        `x`,
+        `y`,
+        `id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO game_board (
+            `game_id`,
+            `army`,
+            `duty`,
+            `chess_sequence`,
+            `x`,
+            `y`
+        ) VALUES (
+            #{pojo.gameId},
+            #{pojo.army},
+            #{pojo.duty},
+            #{pojo.chessSequence},
+            #{pojo.x},
+            #{pojo.y}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO game_board
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.gameId!=null"> `game_id`,</if>
+            <if test="pojo.army!=null"> `army`,</if>
+            <if test="pojo.duty!=null"> `duty`,</if>
+            <if test="pojo.chessSequence!=null"> `chess_sequence`,</if>
+            <if test="pojo.x!=null"> `x`,</if>
+            <if test="pojo.y!=null"> `y`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.gameId!=null">#{pojo.gameId},</if>
+            <if test="pojo.army!=null">#{pojo.army},</if>
+            <if test="pojo.duty!=null">#{pojo.duty},</if>
+            <if test="pojo.chessSequence!=null">#{pojo.chessSequence},</if>
+            <if test="pojo.x!=null">#{pojo.x},</if>
+            <if test="pojo.y!=null">#{pojo.y},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO game_board (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.gameId},
+            #{pojo.army},
+            #{pojo.duty},
+            #{pojo.chessSequence},
+            #{pojo.x},
+            #{pojo.y},
+            #{pojo.id},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE game_board
+        <set>
+            <if test="pojo.gameId != null"> `game_id` = #{pojo.gameId}, </if>
+            <if test="pojo.army != null"> `army` = #{pojo.army}, </if>
+            <if test="pojo.duty != null"> `duty` = #{pojo.duty}, </if>
+            <if test="pojo.chessSequence != null"> `chess_sequence` = #{pojo.chessSequence}, </if>
+            <if test="pojo.x != null"> `x` = #{pojo.x}, </if>
+            <if test="pojo.y != null"> `y` = #{pojo.y}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

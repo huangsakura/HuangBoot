@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.chess.domain.dao.GameDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.chess.domain.entity.Game">
+        <result column="red_user_id" property="redUserId"/>
+        <result column="black_user_id" property="blackUserId"/>
+        <result column="status" property="status"/>
+        <result column="winner" property="winner"/>
+        <result column="start_time" property="startTime"/>
+        <result column="finish_time" property="finishTime"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `red_user_id`,
+        `black_user_id`,
+        `status`,
+        `winner`,
+        `start_time`,
+        `finish_time`,
+        `id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO game (
+            `red_user_id`,
+            `black_user_id`,
+            `status`,
+            `winner`,
+            `start_time`,
+            `finish_time`
+        ) VALUES (
+            #{pojo.redUserId},
+            #{pojo.blackUserId},
+            #{pojo.status},
+            #{pojo.winner},
+            #{pojo.startTime},
+            #{pojo.finishTime}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO game
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.redUserId!=null"> `red_user_id`,</if>
+            <if test="pojo.blackUserId!=null"> `black_user_id`,</if>
+            <if test="pojo.status!=null"> `status`,</if>
+            <if test="pojo.winner!=null"> `winner`,</if>
+            <if test="pojo.startTime!=null"> `start_time`,</if>
+            <if test="pojo.finishTime!=null"> `finish_time`,</if>
+            <if test="pojo.id!=null"> `id`,</if>
+            <if test="pojo.createTime!=null"> `create_time`,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.redUserId!=null">#{pojo.redUserId},</if>
+            <if test="pojo.blackUserId!=null">#{pojo.blackUserId},</if>
+            <if test="pojo.status!=null">#{pojo.status},</if>
+            <if test="pojo.winner!=null">#{pojo.winner},</if>
+            <if test="pojo.startTime!=null">#{pojo.startTime},</if>
+            <if test="pojo.finishTime!=null">#{pojo.finishTime},</if>
+            <if test="pojo.id!=null">#{pojo.id},</if>
+            <if test="pojo.createTime!=null">#{pojo.createTime},</if>
+        </trim>
+    </insert>
+
+    <!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO game (
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.redUserId},
+            #{pojo.blackUserId},
+            #{pojo.status},
+            #{pojo.winner},
+            #{pojo.startTime},
+            #{pojo.finishTime},
+            #{pojo.id},
+            #{pojo.createTime}
+            )
+        </foreach>
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE game
+        <set>
+            <if test="pojo.redUserId != null"> `red_user_id` = #{pojo.redUserId}, </if>
+            <if test="pojo.blackUserId != null"> `black_user_id` = #{pojo.blackUserId}, </if>
+            <if test="pojo.status != null"> `status` = #{pojo.status}, </if>
+            <if test="pojo.winner != null"> `winner` = #{pojo.winner}, </if>
+            <if test="pojo.startTime != null"> `start_time` = #{pojo.startTime}, </if>
+            <if test="pojo.finishTime != null"> `finish_time` = #{pojo.finishTime}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

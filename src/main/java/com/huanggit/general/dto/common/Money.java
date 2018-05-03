@@ -9,7 +9,7 @@ import java.io.Serializable;
  */
 public class Money implements Serializable {
 
-    private Long cent = 0L;
+    private long cent = 0;
 
     public Long getCent() {
         return cent;
@@ -36,7 +36,7 @@ public class Money implements Serializable {
         if (!(obj instanceof Money)) {
             return false;
         }
-        return this.cent.compareTo(((Money)obj).getCent()) == 0;
+        return this.cent == ((Money)obj).getCent();
     }
 
     public Money add(Money other) {
@@ -44,7 +44,7 @@ public class Money implements Serializable {
     }
 
     public Money subtract(Money other) {
-        if (this.cent.compareTo(other.cent) < 0) {
+        if (this.cent < other.getCent()) {
             throw new BusinessException("被减数不能小于减数");
         }
         return Money.cent(this.cent - other.cent);
