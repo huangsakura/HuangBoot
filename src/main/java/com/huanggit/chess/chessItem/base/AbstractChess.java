@@ -11,6 +11,16 @@ import lombok.Data;
 @Data
 public abstract class AbstractChess {
 
+    public AbstractChess(){};
+
+    public AbstractChess(Army army,Duty duty,int x,int y,int sequence) {
+        this.army = army;
+        this.duty = duty;
+        this.x = x;
+        this.y = y;
+        this.sequence = sequence;
+    }
+
     private Army army;
 
     private Duty duty;

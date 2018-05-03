@@ -1,6 +1,7 @@
 package com.huanggit.chess.service;
 
 import com.huanggit.chess.chessItem.*;
+import com.huanggit.chess.chessItem.base.AbstractChess;
 import com.huanggit.chess.enumeration.Army;
 import com.huanggit.chess.enumeration.Duty;
 import org.springframework.stereotype.Service;
@@ -102,5 +103,14 @@ public class GameBoardService {
         gameBoardDao.insert(gameBoard30);
         gameBoardDao.insert(gameBoard31);
         gameBoardDao.insert(gameBoard32);
+    }
+
+    public AbstractChess getByPosition(Long gameId,int x,int y) {
+        GameBoard gameBoard = gameBoardDao.getByPosition(gameId,x,y);
+        if (null == gameBoard) {
+            return null;
+        }
+        return new AbstractChess(gameBoard.getArmy(),gameBoard.getDuty(),
+                gameBoard.getX(),gameBoard.getY(),gameBoard.getChessSequence()) {};
     }
 }

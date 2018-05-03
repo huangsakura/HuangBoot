@@ -10,7 +10,7 @@ import com.huanggit.chess.enumeration.Duty;
 public class ChessZu extends AbstractChess {
 
     public ChessZu(Army army, int sequence) {
-        this.setDuty(Duty.PAO);
+        this.setDuty(Duty.ZU);
         this.setArmy(army);
         this.setSequence(sequence);
         switch (army) {

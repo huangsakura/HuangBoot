@@ -37,4 +37,7 @@ public class GameBoard extends BaseEntity {
     private Integer x;
 
     private Integer y;
+
+    @ColumnConstraint(nullable = false,maxLength = 24,allowBlank = false,minLength = 1)
+    private String validCode = "0";
 }
