@@ -7,5 +7,7 @@ public interface GeneralConstant {
 
     String EMPTY_STRING = "";
 
+    String ZERO_STRING = "0";
+
     String DATA_STRING = "data";
 }

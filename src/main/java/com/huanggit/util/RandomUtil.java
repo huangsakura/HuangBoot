@@ -13,9 +13,16 @@ public class RandomUtil {
 
     private RandomUtil(){}
 
-    private static final char[] ENGLISH_CHARS = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
-
+    private static final char[] BIG_ENGLISH_CHARS = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    private static final char[] SMALL_ENGLISH_CHARS = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     private static final char[] NUMBERS = {'1','2','3','4','5','6','7','8','9','0'};
+
+    private static final char[] ALL_CHARS = new char[62];
+    static {
+        System.arraycopy(BIG_ENGLISH_CHARS,0,ALL_CHARS,0,26);
+        System.arraycopy(SMALL_ENGLISH_CHARS,0,ALL_CHARS,26,26);
+        System.arraycopy(NUMBERS,0,ALL_CHARS,52,10);
+    }
 
     private static final SecureRandom RANDOM = new SecureRandom();
 
@@ -26,7 +33,7 @@ public class RandomUtil {
         StringBuffer sb = new StringBuffer();
 
         for (int i=0;i<length;i++) {
-            sb.append(ENGLISH_CHARS[RANDOM.nextInt(26)]);
+            sb.append(ALL_CHARS[RANDOM.nextInt(62)]);
         }
         return sb.toString();
     }
@@ -56,6 +63,10 @@ public class RandomUtil {
     }
 
     public static void main(String[] a) {
-        System.out.println(randomString(12));
+        System.out.println(System.nanoTime());
+        System.out.println(System.nanoTime());
+        System.out.println(System.nanoTime());
+        System.out.println(System.currentTimeMillis());
+        System.out.println(randomChar(5));
     }
 }

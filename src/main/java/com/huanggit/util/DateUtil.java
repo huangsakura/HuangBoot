@@ -16,6 +16,7 @@ public class DateUtil {
     public static final String CHINESE_DATE_FORMAT_SLASH = "yyyy/MM/dd";
     public static final String CHINESE_DATETIME_FORMAT_SLASH = "yyyy/MM/dd HH:mm:ss";
     public static final String DATETIME_NOT_SEPARATOR = "yyyyMMddHHmmssSSS";
+    public static final String DATETIME_NOT_SEPARATOR_HALF_YEAR = "yyMMddHHmmssSSS";
     public static final String DATE_NOT_SEPARATOR = "yyyyMMdd";
 
     private static SimpleDateFormat SDF_CHINESE_DATE_FORMAT_LINE;
@@ -23,6 +24,7 @@ public class DateUtil {
     private static SimpleDateFormat SDF_CHINESE_DATE_FORMAT_SLASH;
     private static SimpleDateFormat SDF_CHINESE_DATETIME_FORMAT_SLASH;
     private static SimpleDateFormat SDF_DATETIME_NOT_SEPARATOR;
+    private static SimpleDateFormat SDF_DATETIME_NOT_SEPARATOR_HALF_YEAR;
     private static SimpleDateFormat SDF_DATE_NOT_SEPARATOR;
 
     public enum DateFormatPattern {
@@ -31,6 +33,7 @@ public class DateUtil {
         CHINESE_DATE_FORMAT_SLASH,
         CHINESE_DATETIME_FORMAT_SLASH,
         DATETIME_NOT_SEPARATOR,
+        DATETIME_NOT_SEPARATOR_HALF_YEAR,
         DATE_NOT_SEPARATOR
     }
 
@@ -70,6 +73,11 @@ public class DateUtil {
                     SDF_DATE_NOT_SEPARATOR = new SimpleDateFormat(DATE_NOT_SEPARATOR);
                 }
                 return SDF_DATE_NOT_SEPARATOR;
+            } case DATETIME_NOT_SEPARATOR_HALF_YEAR :{
+                if (null == SDF_DATETIME_NOT_SEPARATOR_HALF_YEAR) {
+                    SDF_DATETIME_NOT_SEPARATOR_HALF_YEAR = new SimpleDateFormat(DATETIME_NOT_SEPARATOR_HALF_YEAR);
+                }
+                return SDF_DATETIME_NOT_SEPARATOR_HALF_YEAR;
             } default:{
                 throw new UnsupportedOperationException();
             }

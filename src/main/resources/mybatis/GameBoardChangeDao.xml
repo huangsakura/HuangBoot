@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.huanggit.chess.domain.dao.GameBoardChangeDao">
+    <!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.huanggit.chess.domain.entity.GameBoardChange">
+        <result column="game_id" property="gameId"/>
+        <result column="chess_board_id" property="chessBoardId"/>
+        <result column="chess_desc" property="chessDesc"/>
+        <result column="from_x" property="fromX"/>
+        <result column="from_y" property="fromY"/>
+        <result column="to_x" property="toX"/>
+        <result column="to_y" property="toY"/>
+        <result column="id" property="id"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <!--auto generated Code-->
+    <sql id="all_column">
+        `game_id`,
+        `chess_board_id`,
+        `chess_desc`,
+        `from_x`,
+        `from_y`,
+        `to_x`,
+        `to_y`,
+        `id`,
+        `create_time`
+    </sql>
+
+    <!--auto generated Code-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
+        INSERT INTO game_board_change (
+            `game_id`,
+            `chess_board_id`,
+            `chess_desc`,
+            `from_x`,
+            `from_y`,
+            `to_x`,
+            `to_y`
+        ) VALUES (
+            #{pojo.gameId},
+            #{pojo.chessBoardId},
+            #{pojo.chessDesc},
+            #{pojo.fromX},
+            #{pojo.fromY},
+            #{pojo.toX},
+            #{pojo.toY}
+        )
+    </insert>
+
+    <!--auto generated Code-->
+    <update id="update">
+        UPDATE game_board_change
+        <set>
+            <if test="pojo.gameId != null"> `game_id` = #{pojo.gameId}, </if>
+            <if test="pojo.chessBoardId != null"> `chess_board_id` = #{pojo.chessBoardId}, </if>
+            <if test="pojo.chessDesc != null"> `chess_desc` = #{pojo.chessDesc}, </if>
+            <if test="pojo.fromX != null"> `from_x` = #{pojo.fromX}, </if>
+            <if test="pojo.fromY != null"> `from_y` = #{pojo.fromY}, </if>
+            <if test="pojo.toX != null"> `to_x` = #{pojo.toX}, </if>
+            <if test="pojo.toY != null"> `to_y` = #{pojo.toY}, </if>
+            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
+            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime} </if>
+        </set>
+        WHERE id = #{pojo.id}
+    </update>
+</mapper>
+

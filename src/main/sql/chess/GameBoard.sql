@@ -7,7 +7,7 @@ CREATE TABLE `game_board` (
 	`chess_sequence` INT(1) NOT NULL COMMENT 'chessSequence',
 	`x` INT(1) NOT NULL COMMENT 'x',
 	`y` INT(1) NOT NULL COMMENT 'y',
-	`valid_code` BIGINT(24) NOT NULL DEFAULT '0',
+	`valid_code` VARCHAR (24) NOT NULL DEFAULT '0',
 	`create_time` DATETIME DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`),
 	UNIQUE INDEX `UNI_game_army_duty_sequence` (`game_id`, `army`, `duty`, `chess_sequence`) USING BTREE,
