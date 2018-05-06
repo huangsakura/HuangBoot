@@ -23,4 +23,7 @@ public interface GameBoardDao {
 
     @Select("SELECT * FROM game_board WHERE id=#{id} FOR UPDATE")
     GameBoard getForUpdate(@Param("id") Long id);
+
+    @Select("SELECT * FROM game_board WHERE id=#{id}")
+    GameBoard get(@Param("id") Long id);
 }

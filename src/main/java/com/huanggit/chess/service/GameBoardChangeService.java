@@ -21,7 +21,8 @@ public class GameBoardChangeService {
         return gameBoardChangeDao.update(pojo);
     }
 
-    public GameBoardChange saveOne(Long gameId,Long chessBoardId,String chessDesc,int fromX,int fromY,int toX,int toY) {
+    public GameBoardChange saveOne(Long gameId,Long chessBoardId,String chessDesc
+            ,int fromX,int fromY,int toX,int toY) {
         GameBoardChange gameBoardChange = new GameBoardChange();
         gameBoardChange.setChessBoardId(chessBoardId);
         gameBoardChange.setChessDesc(chessDesc);

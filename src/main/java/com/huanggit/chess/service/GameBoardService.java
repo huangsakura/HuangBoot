@@ -2,8 +2,10 @@ package com.huanggit.chess.service;
 
 import com.huanggit.chess.enumeration.Army;
 import com.huanggit.chess.enumeration.Duty;
+import com.huanggit.enumeration.common.ResultCode;
 import com.huanggit.exception.BusinessException;
 import com.huanggit.general.constant.GeneralConstant;
+import com.huanggit.general.dto.common.Pair;
 import com.huanggit.util.UUIDUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,9 @@ import javax.annotation.Resource;
 import com.huanggit.chess.domain.entity.GameBoard;
 import com.huanggit.chess.domain.dao.GameBoardDao;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -114,7 +119,7 @@ public class GameBoardService {
         GameBoard gameBoardNext = gameBoardDao.getByPositionForUpdate(gameBoardNow.getGameId(),toX,toY);
         if (null != gameBoardNext) {
             if (gameBoardNow.getArmy().equals(gameBoardNext.getArmy())) {
-                throw new BusinessException("欲占领位置目前已有我方棋子");
+                throw new BusinessException("欲占领位置已有我方棋子");
             }
             gameBoardNext.setValidCode(UUIDUtil.getUUID(UUIDUtil.Type.TIME));
             gameBoardDao.update(gameBoardNext);
@@ -123,6 +128,35 @@ public class GameBoardService {
         gameBoardNow.setX(toX);
         gameBoardNow.setY(toY);
         gameBoardDao.update(gameBoardNow);
+    }
+
+    public List<Pair<Integer,Integer>> findNextSteps(Long id) {
+        List<Pair<Integer,Integer>> result = new ArrayList<>();
+
+        GameBoard gameBoard = gameBoardDao.get(id);
+        if (gameBoard == null) {
+            throw new BusinessException("没有找到对应的棋子",ResultCode.OBJECT_NOT_EXIST);
+        }
+        return result;
+    }
+
+    private List<Pair<Integer,Integer>> findNextStepsOfJiang(Army army,int currentX,int currentY) {
+        List<Pair<Integer,Integer>> result = new ArrayList<>();
+        switch (army) {
+            case RED:{
+                if ((currentX == 3)) {
+                    if (currentY == 0) {
+
+                    }
+                }
+                break;
+            } case BLACK:{
+                break;
+            } default:{
+                break;
+            }
+        }
+        return result;
     }
 
     public static void main(String[] a) {
