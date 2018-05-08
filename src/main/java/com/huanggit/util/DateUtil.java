@@ -100,4 +100,8 @@ public class DateUtil {
         calendar.set(Calendar.MILLISECOND,0);
         return calendar.getTime();
     }
+
+    public static Date currentTime() {
+        return new Date();
+    }
 }

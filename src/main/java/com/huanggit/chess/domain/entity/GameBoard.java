@@ -228,4 +228,12 @@ public class GameBoard extends BaseEntity {
 
     @ColumnConstraint(nullable = false,maxLength = 24,allowBlank = false,minLength = 1)
     private String validCode = GeneralConstant.ZERO_STRING;
+
+    public String getChessRedisKey() {
+        return String.valueOf(gameId) + "_" + army.toString() + "_" + duty.toString() + "_" + chessSequence;
+    }
+
+    public String getPositionRedisKey() {
+        return String.valueOf(gameId) + "_" + String.valueOf(x) + "_" + String.valueOf(y);
+    }
 }

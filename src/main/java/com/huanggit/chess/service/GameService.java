@@ -1,10 +1,10 @@
 package com.huanggit.chess.service;
 
 import com.huanggit.chess.enumeration.GameStatus;
+import com.huanggit.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 import com.huanggit.chess.domain.entity.Game;
 import com.huanggit.chess.domain.dao.GameDao;
@@ -40,7 +40,7 @@ public class GameService{
         Game game = new Game();
         game.setRedUserId(redUserId);
         game.setBlackUserId(blackUserId);
-        game.setStartTime(new Date());
+        game.setStartTime(DateUtil.currentTime());
         game.setStatus(GameStatus.WORKING);
         gameDao.insert(game);
 
